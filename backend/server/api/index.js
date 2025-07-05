@@ -1,6 +1,21 @@
 const express = require("express");
 const cors = require('cors');
+const mongoose = require('mongoose');
 const app = express();
+
+// Connect to MongoDB
+mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost:27017/404cast', {
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+});
+
+mongoose.connection.on('connected', () => {
+  console.log('Connected to MongoDB');
+});
+
+mongoose.connection.on('error', (err) => {
+  console.error('MongoDB connection error:', err);
+});
 
 // Import routers
 const leaderboardsRouter = require('./routers/leaderboards');
