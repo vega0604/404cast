@@ -1,10 +1,11 @@
+import StreetView from './components/StreetView'
 import './index.css'
 
 function App() {
 
   return (
     <>
-      Hewwo
+      <StreetView />
     </>
   )
 }
