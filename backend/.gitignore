@@ -186,6 +186,9 @@ logs
 *.tar.gz
 *.rar
 
+# Data files
+*.csv
+
 # Local configuration files
 config.local.*
 settings.local.*
