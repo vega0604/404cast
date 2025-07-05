@@ -1,0 +1,71 @@
+#sidebar {
+    z-index: 9;
+    position: fixed;
+    left: var(--inset_margin);
+    top: var(--inset_margin);
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    width: 16.125rem;
+    max-width: 16.125rem;
+    min-height: 52px;
+    border-radius: 0.5rem;
+    border: 1px solid var(--border);
+    background: var(--sidebar_gradient);
+}
+
+#header {
+    height: 3.25rem;
+    padding: 0rem 0.75rem 0rem 1.5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    align-self: stretch;
+    border-bottom: 1px solid var(--border);
+}
+
+#logo_container {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0.5rem;
+    cursor: pointer;
+    transition: opacity 0.15s ease-in-out;
+}
+
+#logo_container:hover {
+    opacity: 0.75;
+}
+
+#logo_container h1 {
+    font-family: "FH Lecturis";
+    font-size: 1.25rem;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    letter-spacing: -0.05rem;
+}
+
+#logo {
+    width: 2rem;
+    height: 1.50256rem;
+    aspect-ratio: 32.00/24.04;
+}
+
+#hat {
+    position: absolute;
+    left: -0.75rem;
+    top: -0.5rem;
+}
+
+#sidebar_toggle {
+    cursor: pointer;
+    padding: 0.5rem;
+    border-radius: 0.5rem;
+    transition: background-color 0.1s ease-in-out;
+}
+
+#sidebar_toggle:hover {
+    background-color: var(--border);
+}

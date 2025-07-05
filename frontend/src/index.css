@@ -1,0 +1,72 @@
+@font-face {
+    font-family: 'FH Lecturis';
+    src: url('/fonts/fhlecturisroundedtest-bold.otf') format('opentype');
+    font-weight: bold;
+}
+
+@font-face {
+    font-family: 'FH Lecturis';
+    src: url('/fonts/fhlecturisroundedtest-regular.otf') format('opentype');
+    font-weight: normal;
+}
+
+:root {
+    --dark: #000000;
+    --dark_75: rgba(0, 0, 0, 0.75);
+    --dark_70: rgba(0, 0, 0, 0.7);
+    --dark_50: rgba(0, 0, 0, 0.5);
+    --dark_30: rgba(0, 0, 0, 0.3);
+    --dark_25: rgba(0, 0, 0, 0.25);
+    --dark_10: rgba(0, 0, 0, 0.1);
+    --dark_5: rgba(0, 0, 0, 0.05);
+    --dark_1: rgba(0, 0, 0, 0.01);
+
+    --light: #FFFFFF;
+    --light_75: rgba(220, 225, 231, 0.75);
+    --light_70: rgba(220, 225, 231, 0.7);
+    --light_50: rgba(220, 225, 231, 0.5);
+    --light_25: rgba(220, 225, 231, 0.25);
+    --light_10: rgba(220, 225, 231, 0.1);
+    --light_5: rgba(220, 225, 231, 0.05);
+    --light_1: rgba(220, 225, 231, 0.01);
+
+    --sidebar_gradient: linear-gradient(180deg, #2C336D 0%, #233D5F 100%);
+    --border: #2D5987;
+    --accent: #39FFFF;
+    --focus: #39FFFF;
+
+    --inset_margin: 1.125rem;
+}
+
+html,
+body {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    overflow: hidden;
+    background-color: #000000;
+    -webkit-font-smoothing: antialiased !important;
+    color: var(--light);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    font-family: 'FH Lecturis', 'Open Sans', system-ui, sans-serif;
+    box-sizing: border-box;
+    transition: outline 0.05s ease-in-out;
+}
+
+*:focus-visible {
+    outline: 3px solid var(--focus);
+}
+
+*::selection {
+    background-color: #C3EDF9;
+    color: var(--accent);
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
