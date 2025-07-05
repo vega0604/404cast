@@ -22,14 +22,5 @@ router.post('/increment', async (req, res) => {
   }
 });
 
-// POST reset likes (optional utility endpoint)
-router.post('/reset', async (req, res) => {
-  try {
-    const count = await likesService.resetLikes();
-    res.json({ count });
-  } catch (error) {
-    res.status(500).json({ error: error.message });
-  }
-});
 
 module.exports = router;

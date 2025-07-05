@@ -25,7 +25,7 @@ class LikesService {
     try {
       const existingCounter = await Likes.findOne({ id: 'main_counter' });
       if (!existingCounter) {
-        const newCounter = new Likes({ id: 'main_counter', count: 0 });
+        const newCounter = new Likes({ id: 'main_counter', count: 500 });
         await newCounter.save();
         return newCounter;
       }

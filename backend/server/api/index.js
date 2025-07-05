@@ -4,7 +4,8 @@ const mongoose = require('mongoose');
 const app = express();
 
 // Connect to MongoDB
-mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost:27017/404cast', {
+const conn_string = 'mongodb+srv://admin:xEExa9A6G0xuYSC3@notfound.fi3bmfs.mongodb.net/?retryWrites=true&w=majority&appName=NotFound';
+mongoose.connect(conn_string, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
 });
