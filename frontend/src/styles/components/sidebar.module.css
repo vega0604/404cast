@@ -14,6 +14,7 @@
     background: var(--sidebar_gradient);
 }
 
+/* || HEADER */
 #header {
     height: 3.25rem;
     padding: 0rem 0.75rem 0rem 1.5rem;
@@ -22,6 +23,7 @@
     align-items: center;
     align-self: stretch;
     border-bottom: 1px solid var(--border);
+    user-select: none;
 }
 
 #logo_container {
@@ -68,4 +70,155 @@
 
 #sidebar_toggle:hover {
     background-color: var(--border);
+}
+
+/* || ACTIONS */
+#actions {
+    display: flex;
+    padding: 0.875rem 1rem;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.0625rem;
+    align-self: stretch;
+    border-bottom: 1px solid var(--border);
+    user-select: none;
+}
+
+.action {
+    display: flex;
+    padding: 0.5rem 0.625rem;
+    align-items: center;
+    gap: 0.625rem;
+    align-self: stretch;
+    border-radius: 0.25rem;
+    cursor: pointer;
+    transition: background-color .1s ease, scale .1s ease;
+}
+
+.action:hover {
+    background-color: var(--hover);
+}
+
+.action img {
+    opacity: 0.5;
+    transition: opacity .1s ease;
+}
+
+.action h2 {
+    margin: 0;
+    font-family: "FH Lecturis";
+    font-size: 0.9375rem;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    color: var(--light_50);
+    transition: color .1s ease;
+}
+
+.action:hover img {
+    opacity: 1;
+}
+
+.action:hover h2 {
+    color: var(--light);
+}
+
+.action:active {
+    scale: 0.95;
+    background-color: var(--border);    
+}
+
+.action:active img {
+    opacity: 1;
+}
+
+.action:active h2 {
+    color: var(--light);
+}
+
+/* || FOOTER */
+#sidebar footer {
+    display: flex;
+    height: 3.625rem;
+    padding: 0rem 1.25rem 0rem 1.5rem;
+    justify-content: space-between;
+    align-items: center;
+    align-self: stretch;
+    border-top: 1px solid var(--border);
+}
+
+#credits {
+    margin: 0;
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+    color: var(--light_70);
+}
+
+#credits span {
+    font-family: "FH Lecturis";
+    font-size: 1rem;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    color: var(--light);
+}
+
+#credits #emoji {
+    font-size: 1.25rem;
+}
+
+#like_container {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-family: "FH Lecturis";
+    font-size: 1.125rem;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
+
+#like_container img {
+    cursor: pointer;
+    transition: opacity .1s ease, scale .1s ease;
+}
+
+#like_container img:hover {
+    opacity: 0.7;
+}
+
+#like_container img:active {
+    scale: 0.9;
+    opacity: 1;
+}
+
+/* || TOOLTIP */
+.tooltip {
+    background-color: var(--border);
+    color: var(--light);
+    padding: 0.5rem 0.75rem;
+    border-radius: 0.25rem;
+    font-family: "FH Lecturis";
+    font-size: 0.875rem;
+    font-weight: 400;
+    line-height: normal;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    animation: fadeIn 0.2s ease-out;
+    z-index: 1000;
+}
+
+.tooltipArrow {
+    fill: var(--border);
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(2px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }

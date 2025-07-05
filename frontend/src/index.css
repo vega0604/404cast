@@ -34,6 +34,7 @@
     --border: #2D5987;
     --accent: #39FFFF;
     --focus: #39FFFF;
+    --hover: #215767;
 
     --inset_margin: 1.125rem;
 }
@@ -62,7 +63,7 @@ body {
 }
 
 *::selection {
-    background-color: #C3EDF9;
+    background-color: rgb(53, 107, 107);
     color: var(--accent);
 }
 
