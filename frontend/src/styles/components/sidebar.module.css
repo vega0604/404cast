@@ -209,7 +209,6 @@
     justify-content: center;
     align-items: center;
     gap: 0.625rem;
-    background-color: var(--border);
     border-radius: 0.25rem;
     transition: background-color .1s ease;
 }
@@ -250,7 +249,7 @@
     display: flex;
     align-items: center;
     gap: 0.5rem;
-    font-size: 1.125rem;
+    font-size: 1rem;
     font-style: normal;
     font-weight: 400;
     line-height: normal;

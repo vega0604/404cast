@@ -54,7 +54,7 @@ const Sidebar = () => {
     const handleLikeClick = async () => {
         if (isLoading) return;
         setIsLoading(true);
-        
+
         try {
             const response = await fetch('/api/likes/increment', {
                 method: 'POST',
@@ -62,7 +62,7 @@ const Sidebar = () => {
                     'Content-Type': 'application/json',
                 },
             });
-            
+
             const data = await response.json();
             setLikeCount(data.count);
             localStorage.setItem('likeCount', data.count.toString());
@@ -70,7 +70,7 @@ const Sidebar = () => {
             if (tooltipTimeout) clearTimeout(tooltipTimeout);
             const newTimeout = setTimeout(() => setShowTooltip(false), 750);
             setTooltipTimeout(newTimeout);
-            
+
         } catch (error) {
             console.error('Error incrementing likes:', error);
         } finally {
@@ -109,7 +109,12 @@ const Sidebar = () => {
                                 <div className={styles.round_number}>{round.round}</div>
                                 <div className={styles.location_name}>{round.location}</div>
                                 {round.score !== null && (
-                                    <div className={styles.round_score}>
+                                    <div
+                                        className={styles.round_score}
+                                        style={{
+                                            backgroundColor: `hsla(${Math.max(0, Math.min(125, (round.score / 100) * 125))}, 51%, 27%, 1)`
+                                        }}
+                                    >
                                         {round.score}
                                     </div>
                                 )}
