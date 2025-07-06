@@ -7,7 +7,6 @@ import { useState } from 'react';
 
 const BottomBar = () => {
     const [value, setValue] = useState([50]);
-    const [isDragging, setIsDragging] = useState(false);
 
     return (
         <Tooltip.Provider delayDuration={100}>

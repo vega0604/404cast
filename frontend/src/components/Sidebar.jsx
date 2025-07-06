@@ -7,6 +7,7 @@ import leaderboard from '@assets/images/icons/leaderboard.svg';
 import heart from '@assets/images/icons/heart.svg';
 import { useState, useEffect } from 'react';
 import * as Tooltip from '@radix-ui/react-tooltip';
+import Leaderboard from './Leaderboard';
 
 const Sidebar = ({ gameProgress }) => {
     const [likeCount, setLikeCount] = useState(() => {
@@ -17,6 +18,7 @@ const Sidebar = ({ gameProgress }) => {
     const [tooltipTimeout, setTooltipTimeout] = useState(null);
     const [isCollapsed, setIsCollapsed] = useState(false);
     const [isLoading, setIsLoading] = useState(false);
+    const [isLeaderboardOpen, setIsLeaderboardOpen] = useState(false);
 
     useEffect(() => {
         fetchLikesCount();
@@ -82,7 +84,7 @@ const Sidebar = ({ gameProgress }) => {
                             <img src={play} alt="Play icon" />
                             <h2>New Game</h2>
                         </div>
-                        <div className={styles.action}>
+                        <div className={styles.action} onClick={() => setIsLeaderboardOpen(true)}>
                             <img src={leaderboard} alt="Leaderboard icon" />
                             <h2>Leaderboard</h2>
                         </div>
@@ -135,6 +137,11 @@ const Sidebar = ({ gameProgress }) => {
                     </footer>
                 </>
             )}
+            
+            <Leaderboard 
+                isOpen={isLeaderboardOpen} 
+                onOpenChange={setIsLeaderboardOpen} 
+            />
         </nav>
     );
 };
