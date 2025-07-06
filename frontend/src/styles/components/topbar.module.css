@@ -59,6 +59,31 @@
     opacity: 1;
 }
 
+/* Custom toast styles for help message */
+.help_toast {
+    display: inline-flex;
+    border-radius: 0.5rem;
+    border: 1px solid var(--dark_70);
+    background:var(--dark_70) !important;
+    padding: 0.375rem 0.75rem !important;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: #FFF;
+    font-size: 1.25rem;
+    font-weight: 400;
+    white-space: nowrap !important;
+    margin-bottom: 9.5rem;
+    margin-left: 1.2rem !important;
+}
+
+/* Toast hover effect */
+.help_toast:hover {
+    transform: translateY(-2px) !important;
+    box-shadow: 0 16px 50px rgba(0,0,0,0.7) !important;
+    transition: transform 0.2s ease, box-shadow 0.2s ease !important;
+}
+
 /* || RESPONSIVE */
 @media screen and (max-width: 710px) {
     #topbar {

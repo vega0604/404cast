@@ -4,6 +4,7 @@ import help from '@assets/images/icons/help.svg'
 import speaker from '@assets/images/icons/speaker.svg'
 import speaker_muted from '@assets/images/icons/speaker_muted.svg'
 import AudioPlayer from '@components/AudioPlayer'
+import { toast } from 'sonner'
 
 const TopBar = ({ gameProgress }) => {
     const [isMusicOn, setIsMusicOn] = useState(true);
@@ -12,10 +13,24 @@ const TopBar = ({ gameProgress }) => {
         setIsMusicOn(!isMusicOn);
     };
 
+    const handleHelpClick = () => {
+        toast('Estimate the % chance of a violent abduction here!', {
+            duration: 5000,
+            position: 'bottom-center',
+            className: styles.help_toast
+        });
+    };
+
     return (
         <>
             <header id={styles.topbar}>
-                <img src={help} alt="Help icon" aria-label="Help"/>
+                <button 
+                    className={styles.misc_button}
+                    onClick={handleHelpClick}
+                    aria-label="Help"
+                >
+                    <img src={help} alt="Help icon" />
+                </button>
                 <button 
                     className={styles.misc_button}
                     onClick={toggleMusic}
