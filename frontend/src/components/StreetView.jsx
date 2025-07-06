@@ -90,39 +90,42 @@ const StreetView = () => {
   }, [apiReady, center]);
 
   return (
-    <LoadScript
-      googleMapsApiKey={API_KEY}
-      onLoad={() => setApiReady(true)}
-    >
-      <GoogleMap
-        mapContainerStyle={{ width: '100vw', height: '100vh' }}
-        center={center}
-        zoom={14}
-        mapContainerClassName="google-map-container"
-        options={{
-          streetViewControl: false,
-          mapTypeControl: false,
-          disableDefaultUI: true,
-          gestureHandling: 'none'
-        }}
+    <>
+      <LoadScript
+        googleMapsApiKey={API_KEY}
+        onLoad={() => setApiReady(true)}
       >
-        <StreetViewPanorama
-          position={center}
-          visible options={{
-            pov: { heading: 0, pitch: 0 },
-            addressControl: false,
-            fullscreenControl: false,
-            motionTrackingControl: false,
-            panControl: false,
-            enableCloseButton: false,
-            clickToGo: false,
-            zoomControl: true,
-            scrollwheel: true
+        <GoogleMap
+          mapContainerStyle={{ width: '100vw', height: '100vh' }}
+          center={center}
+          zoom={14}
+          mapContainerClassName="google-map-container"
+          options={{
+            streetViewControl: false,
+            mapTypeControl: false,
+            disableDefaultUI: true,
+            gestureHandling: 'none'
           }}
-          containerStyle={{ width: '100vw', height: '100vh' }}
-        />
-      </GoogleMap>
-    </LoadScript>
+        >
+          <StreetViewPanorama
+            position={center}
+            visible options={{
+              pov: { heading: 0, pitch: 0 },
+              addressControl: false,
+              fullscreenControl: false,
+              motionTrackingControl: false,
+              panControl: false,
+              enableCloseButton: false,
+              clickToGo: false,
+              zoomControl: true,
+              scrollwheel: true
+            }}
+            containerStyle={{ width: '100vw', height: '100vh' }}
+          />
+        </GoogleMap>
+      </LoadScript>
+      <div className="vignette_overlay"></div>
+    </>
   );
 };
 
