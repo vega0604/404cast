@@ -4,7 +4,7 @@ import { useState, useEffect } from 'react';
 const API_KEY = import.meta.env.VITE_GOOGLE_MAPS_API_KEY;
 
 const StreetView = () => {
-  const [center] = useState({
+  const [center, setCenter] = useState({
     lat: 43.6532 + (Math.random() - 0.5) * 0.04,
     lng: -79.3832 + (Math.random() - 0.5) * 0.04,
   });
@@ -25,6 +25,14 @@ const StreetView = () => {
       return null;
     }
   };
+  const [captureDate, setCaptureDate] = useState(null);
+
+  const generateNewLocation = () => {
+    setCenter({
+      lat: 43.6532 + (Math.random() - 0.5) * 0.04,
+      lng: -79.3832 + (Math.random() - 0.5) * 0.04,
+    });
+  };
 
   useEffect(() => {
     if (!apiReady || !window.google) return;
@@ -37,18 +45,25 @@ const StreetView = () => {
           const loc = data.location;
           const actualLat = loc.latLng.lat();
           const actualLng = loc.latLng.lng();
-          
+
           console.log('📍 Panorama metadata:');
           console.log('LatLng:', loc.latLng.toString());
           console.log('Pano ID:', loc.pano);
           console.log('Street name / description:', loc.description);
-          
+
           // Fetch neighbourhood prediction for actual panorama coordinates
           fetchLocationPrediction(actualLat, actualLng);
+
+          if (data.imageDate) {
+            const date = new Date(data.imageDate);
+            setCaptureDate(date);
+            console.log('Capture date:', date.toLocaleString());
+          }
         } else {
-          console.warn('No panorama found near this location');
+          console.warn('No panorama found near this location. Regenerating.');
           // Fallback: use original coordinates
           fetchLocationPrediction(center.lat, center.lng);
+          generateNewLocation();
         }
       }
     );
