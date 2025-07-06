@@ -23,13 +23,15 @@ const gameProgress = {
 };
 
 const Sidebar = () => {
-    const [likeCount, setLikeCount] = useState(0);
+    const [likeCount, setLikeCount] = useState(() => {
+        const cached = localStorage.getItem('likeCount');
+        return cached ? parseInt(cached, 10) : 0;
+    });
     const [showTooltip, setShowTooltip] = useState(false);
     const [tooltipTimeout, setTooltipTimeout] = useState(null);
     const [isCollapsed, setIsCollapsed] = useState(false);
     const [isLoading, setIsLoading] = useState(false);
 
-    // Fetch initial likes count on component mount
     useEffect(() => {
         fetchLikesCount();
     }, []);
@@ -39,6 +41,7 @@ const Sidebar = () => {
             const response = await fetch('/api/likes');
             const data = await response.json();
             setLikeCount(data.count);
+            localStorage.setItem('likeCount', data.count.toString());
         } catch (error) {
             console.error('Error fetching likes count:', error);
         }
@@ -49,8 +52,7 @@ const Sidebar = () => {
     };
 
     const handleLikeClick = async () => {
-        if (isLoading) return; // Prevent multiple clicks
-        
+        if (isLoading) return;
         setIsLoading(true);
         
         try {
@@ -63,8 +65,7 @@ const Sidebar = () => {
             
             const data = await response.json();
             setLikeCount(data.count);
-            
-            // Show tooltip
+            localStorage.setItem('likeCount', data.count.toString());
             setShowTooltip(true);
             if (tooltipTimeout) clearTimeout(tooltipTimeout);
             const newTimeout = setTimeout(() => setShowTooltip(false), 750);
