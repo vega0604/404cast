@@ -34,9 +34,10 @@ function App() {
             color: '#fff',
             border: '1px solid #333',
             borderRadius: '8px',
-            boxShadow: '0 4px 12px rgba(0,0,0,0.3)',
             minWidth: '280px',
-            maxWidth: '320px'
+            width: '100%',
+            maxWidth: '320px',
+            fontSize: '1.25rem',
           }
         }}
       />
