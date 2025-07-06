@@ -8,6 +8,10 @@ import heart from '@assets/images/icons/heart.svg';
 import { useState, useEffect } from 'react';
 import * as Tooltip from '@radix-ui/react-tooltip';
 import Leaderboard from './Leaderboard';
+import anya_avatar from '@assets/images/avatars/anya_avatar.png'
+import sebastian_avatar from '@assets/images/avatars/sebastian_avatar.png'
+import seyon_avatar from '@assets/images/avatars/seyon_avatar.png'
+import aleks_avatar from '@assets/images/avatars/aleks_avatar.png'
 
 const Sidebar = ({ gameHistory, currentGame, onNewGame }) => {
     const [likeCount, setLikeCount] = useState(() => {
@@ -19,11 +23,21 @@ const Sidebar = ({ gameHistory, currentGame, onNewGame }) => {
     const [isCollapsed, setIsCollapsed] = useState(false);
     const [isLoading, setIsLoading] = useState(false);
     const [isLeaderboardOpen, setIsLeaderboardOpen] = useState(false);
+    const [showTeamCard, setShowTeamCard] = useState(false);
+    const [teamCardTimeout, setTeamCardTimeout] = useState(null);
 
     useEffect(() => {
         fetchLikesCount();
         
     }, []);
+
+    useEffect(() => {
+        return () => {
+            if (teamCardTimeout) {
+                clearTimeout(teamCardTimeout);
+            }
+        };
+    }, [teamCardTimeout]);
     const baseURL = import.meta.env.VITE_BACKEND_BASE;
 
     const fetchLikesCount = async () => {
@@ -69,6 +83,24 @@ const Sidebar = ({ gameHistory, currentGame, onNewGame }) => {
             setIsLoading(false);
         }
     };
+
+    const handleTeamCardShow = () => {
+        setShowTeamCard(true);
+        if (teamCardTimeout) clearTimeout(teamCardTimeout);
+    };
+
+    const handleTeamCardHide = () => {
+        if (teamCardTimeout) clearTimeout(teamCardTimeout);
+        const newTimeout = setTimeout(() => setShowTeamCard(false), 5000);
+        setTeamCardTimeout(newTimeout);
+    };
+
+    const teamMembers = [
+        { name: 'Anya', avatar: anya_avatar, linkedin: '-anya-popova-' },
+        { name: 'Sebastian', avatar: sebastian_avatar, linkedin: 'sebastian-vega-orozco' },
+        { name: 'Seyon', avatar: seyon_avatar, linkedin: 'seyon-sri' },
+        { name: 'Aleks', avatar: aleks_avatar, linkedin: 'aleksbrsc' }
+    ];
 
     return (
         <nav id={styles.sidebar} className={isCollapsed ? styles.collapsed : ''}>
@@ -156,7 +188,11 @@ const Sidebar = ({ gameHistory, currentGame, onNewGame }) => {
                     </div>
 
                     <footer>
-                        <p id={styles.credits}>
+                        <p 
+                            id={styles.credits}
+                            onMouseEnter={handleTeamCardShow}
+                            onMouseLeave={handleTeamCardHide}
+                        >
                             <span>Made with</span>
                             <span id={styles.emoji}>🕵️</span>
                         </p>
@@ -180,6 +216,30 @@ const Sidebar = ({ gameHistory, currentGame, onNewGame }) => {
                             </Tooltip.Provider>
                         </div>
                     </footer>
+
+                    {showTeamCard && (
+                        <div 
+                            className={styles.team_card_wrapper}
+                            onMouseEnter={handleTeamCardShow}
+                            onMouseLeave={handleTeamCardHide}
+                        >
+                            <div className={styles.team_card}>
+                                <div className={styles.team_members}>
+                                    {teamMembers.map((member, index) => (
+                                        <a
+                                            key={index}
+                                            href={`https://linkedin.com/in/${member.linkedin}`}
+                                            target="_blank"
+                                            rel="noopener noreferrer"
+                                            className={styles.team_member}
+                                        >
+                                            <img src={member.avatar} alt={`${member.name} avatar`} />
+                                        </a>
+                                    ))}
+                                </div>
+                            </div>
+                        </div>
+                    )}
                 </>
             )}
             

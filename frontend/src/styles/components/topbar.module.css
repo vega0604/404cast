@@ -98,4 +98,14 @@
         display: none;
     }
 
+    .location {
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+
+    .round {
+        text-wrap: nowrap;
+    }
+
 }

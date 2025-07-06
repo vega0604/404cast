@@ -231,6 +231,12 @@
     align-items: center;
     gap: 0.25rem;
     color: var(--light_70);
+    cursor: pointer;
+    transition: opacity 0.15s ease-in-out;
+}
+
+#credits:hover {
+    opacity: 0.8;
 }
 
 #credits span {
@@ -269,6 +275,64 @@
     opacity: 1;
 }
 
+/* || TEAM CARD */
+.team_card_wrapper {
+    position: absolute;
+    top: calc(100% + 0.5rem);
+    left: 0;
+    width: 100%;
+    z-index: 10;
+}
+
+.team_card {
+    width: 100%;
+    background: var(--sidebar_gradient);
+    border: 1px solid var(--border);
+    border-radius: 0.5rem;
+    padding: 1rem;
+    animation: teamCardFadeIn 0.2s ease-out;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+}
+
+.team_members {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex: 1 0 0;
+}
+
+.team_member {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    color: var(--light);
+    transition: opacity 0.15s ease-in-out;
+    flex: 1;
+}
+
+.team_member:hover {
+    opacity: 0.8;
+}
+
+.team_member img {
+    width: 3rem;
+    height: 3rem;
+    object-fit: cover;
+    border: 2px solid var(--border);
+}
+
+@keyframes teamCardFadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(4px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
 .tooltip {
     z-index: 9;
     background-color: var(--border);
@@ -279,7 +343,7 @@
     font-weight: 400;
     line-height: normal;
     box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
-    animation: fadeIn 0.2s ease-out;
+    animation: fadeIn 0.3s ease-out;
 }
 
 .tooltip_arrow {
