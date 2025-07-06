@@ -26,6 +26,11 @@
     user-select: none;
 }
 
+#header.collapsed_header {
+    border-bottom: none;
+    border-radius: 0 0 0.5rem 0.5rem;
+}
+
 #logo_container {
     position: relative;
     display: flex;
@@ -278,7 +283,7 @@
     animation: fadeIn 0.2s ease-out;
 }
 
-.tooltipArrow {
+.tooltip_arrow {
     fill: var(--border);
 }
 
