@@ -6,6 +6,7 @@ import TopBar from '@components/TopBar'
 import TVStatic from '@components/TVStatic'
 import { gameProgress } from '@data/gameProgress'
 import BottomBar from './components/BottomBar'
+import PWAUpdater from './components/PWAUpdater'
 
 function App() {
   const tvStaticRef = useRef(null);
@@ -25,6 +26,7 @@ function App() {
       <Sidebar gameProgress={gameProgress} onGuessSubmit={handleGuessSubmit} />
       <TopBar gameProgress={gameProgress} />
       <BottomBar />
+      <PWAUpdater />
     </>
   )
 }
