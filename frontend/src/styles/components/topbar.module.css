@@ -1,0 +1,60 @@
+#topbar {
+    z-index: 9;
+    position: fixed;
+    top: var(--inset_margin);
+    right: var(--inset_margin);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+}
+
+#progress_card {
+    display: inline-flex;
+    padding: 0.75rem 1.25rem;
+    justify-content: center;
+    align-items: center;
+    gap: 1.5rem;
+    border-radius: 0.5rem;
+    border: 1px solid var(--border);
+    background: var(--sidebar_gradient);
+    font-size: 1.125rem;
+    font-weight: 400;
+    margin-left: 0.25rem;
+}
+
+.label {
+    color: rgba(195, 237, 249, 0.50);
+    font-size: 0.75rem;
+    font-weight: 700;
+}
+
+#topbar img {
+    padding: 0.5rem;
+    opacity: .7;
+    cursor: pointer;
+    transition: opacity .1s ease;
+}
+
+#topbar img:hover {
+    opacity: 1;
+}
+
+#topbar .misc_button {
+    background: none;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 9999px;
+}
+
+#topbar .misc_button:hover img {
+    opacity: 1;
+}
+
+#topbar .misc_button:focus img {
+    opacity: 1;
+}

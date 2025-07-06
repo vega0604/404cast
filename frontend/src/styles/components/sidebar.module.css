@@ -168,8 +168,8 @@
     position: relative;
     display: flex;
     padding: 0.5rem 0.625rem;
-    align-items: center;
-    gap: 0.375rem;
+    align-items: flex-end;
+    gap: 0.5rem;
     align-self: stretch;
     border-radius: 0.25rem;
 }
