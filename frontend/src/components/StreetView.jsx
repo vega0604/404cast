@@ -1,5 +1,5 @@
 import { LoadScript, GoogleMap, StreetViewPanorama } from '@react-google-maps/api';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useImperativeHandle, forwardRef } from 'react';
 
 const API_KEY = import.meta.env.VITE_GOOGLE_MAPS_API_KEY;
 
@@ -10,7 +10,7 @@ const TORONTO_BOUNDS = {
   west: -79.639219   // Western boundary
 };
 
-const StreetView = () => {
+const StreetView = forwardRef((_, ref) => {
   const [center, setCenter] = useState({
     lat: 43.6532,
     lng: -79.3832,
@@ -18,6 +18,7 @@ const StreetView = () => {
 
   const [apiReady, setApiReady] = useState(false);
   const [locationData, setLocationData] = useState(null);
+  const [pov, setPov] = useState({ heading: 0, pitch: 0 }); // Track camera position
 
   // Generate random coordinates within Toronto's actual boundaries
   const generateRandomTorontoLocation = () => {
@@ -44,9 +45,17 @@ const StreetView = () => {
   const [captureDate, setCaptureDate] = useState(null);
 
   const generateNewLocation = () => {
+    console.log('🔄 Generating new location for next round...');
     const newLocation = generateRandomTorontoLocation();
     setCenter(newLocation);
+    // Reset camera to default position for new location
+    setPov({ heading: 0, pitch: 0 });
   };
+
+  // Expose methods to parent component
+  useImperativeHandle(ref, () => ({
+    generateNewLocation
+  }));
 
   // Initialize with a random Toronto location
   useEffect(() => {
@@ -109,8 +118,9 @@ const StreetView = () => {
         >
           <StreetViewPanorama
             position={center}
-            visible options={{
-              pov: { heading: 0, pitch: 0 },
+            visible 
+            options={{
+              pov: pov,
               addressControl: false,
               fullscreenControl: false,
               motionTrackingControl: false,
@@ -120,6 +130,12 @@ const StreetView = () => {
               zoomControl: true,
               scrollwheel: true
             }}
+            onPovChanged={(newPov) => {
+              // Update POV state when user moves camera
+              if (newPov) {
+                setPov({ heading: newPov.heading, pitch: newPov.pitch });
+              }
+            }}
             containerStyle={{ width: '100vw', height: '100vh' }}
           />
         </GoogleMap>
@@ -127,6 +143,8 @@ const StreetView = () => {
       <div className="vignette_overlay"></div>
     </>
   );
-};
+});
+
+StreetView.displayName = 'StreetView';
 
 export default StreetView;

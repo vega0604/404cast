@@ -11,22 +11,20 @@ import { Toaster } from 'sonner'
 
 function App() {
   const tvStaticRef = useRef(null);
+  const streetViewRef = useRef(null);
 
-  // Example function to trigger round transition (call this when player clicks guess)
+  // Simple handler that just logs - actual functionality moved to BottomBar
   const handleGuessSubmit = () => {
-    if (tvStaticRef.current) {
-      tvStaticRef.current.startRoundTransition();
-    }
-    // Add your guess submission logic here
+    console.log('Guess submitted from sidebar/other components');
   };
 
   return (
     <>
-      <StreetView />
+      <StreetView ref={streetViewRef} />
       <TVStatic ref={tvStaticRef} />
       <Sidebar gameProgress={gameProgress} onGuessSubmit={handleGuessSubmit} />
       <TopBar gameProgress={gameProgress} />
-      <BottomBar />
+      <BottomBar tvStaticRef={tvStaticRef} streetViewRef={streetViewRef} />
       <PWAUpdater />
       <Toaster 
         position="bottom-right"
