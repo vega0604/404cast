@@ -126,66 +126,64 @@ const Sidebar = ({ gameHistory, currentGame, onNewGame }) => {
                         </div>
                     </div>
 
-                    <div id={styles.game_progress}>
-                        {/* Show current game if it has rounds, otherwise show most recent completed game */}
-                        {currentGame && currentGame.rounds.length > 0 ? (
-                            <>
-                                <h3 id={styles.session_header}>Current Game</h3>
-                                {currentGame.rounds.map((round, index) => (
-                                    <div key={`current-${index}`} className={`${styles.round} ${round.score === null ? styles.active : ''}`}>
-                                        <div className={styles.round_number}>{index + 1}</div>
-                                        <div className={styles.location_name}>{round.location?.description || 'Unknown location'}</div>
-                                        {round.score !== null && (
-                                            <div
-                                                className={styles.round_score}
-                                                style={{
-                                                    backgroundColor: (round.difference !== undefined || (round.answer !== undefined && round.guess !== undefined))
-                                                        ? `hsla(${Math.max(0, Math.min(125, (100 - (round.difference !== undefined ? round.difference : Math.abs(round.answer - round.guess))) * 1.25))}, 51%, 27%, 1)`
-                                                        : `hsla(${Math.max(0, Math.min(125, (round.score / 100) * 125))}, 51%, 27%, 1)`
-                                                }}
-                                            >
-                                                {round.difference !== undefined 
-                                                    ? (100 - round.difference)
-                                                    : (round.answer !== undefined && round.guess !== undefined)
-                                                        ? (100 - Math.abs(round.answer - round.guess))
-                                                        : round.score}
-                                            </div>
-                                        )}
-                                    </div>
-                                ))}
-                            </>
-                        ) : gameHistory.length > 0 ? (
-                            <>
-                                <h3 id={styles.session_header}>Last Game - {new Date(gameHistory[gameHistory.length - 1].datetime).toLocaleDateString()}</h3>
-                                {gameHistory[gameHistory.length - 1].rounds.map((round, index) => (
-                                    <div key={`history-${index}`} className={styles.round}>
-                                        <div className={styles.round_number}>{index + 1}</div>
-                                        <div className={styles.location_name}>{round.location?.description || 'Unknown location'}</div>
-                                        {round.score !== null && (
-                                            <div
-                                                className={styles.round_score}
-                                                style={{
-                                                    backgroundColor: (round.difference !== undefined || (round.answer !== undefined && round.guess !== undefined))
-                                                        ? `hsla(${Math.max(0, Math.min(125, (100 - (round.difference !== undefined ? round.difference : Math.abs(round.answer - round.guess))) * 1.25))}, 51%, 27%, 1)`
-                                                        : `hsla(${Math.max(0, Math.min(125, (round.score / 100) * 125))}, 51%, 27%, 1)`
-                                                }}
-                                            >
-                                                {round.difference !== undefined 
-                                                    ? (100 - round.difference)
-                                                    : (round.answer !== undefined && round.guess !== undefined)
-                                                        ? (100 - Math.abs(round.answer - round.guess))
-                                                        : round.score}
-                                            </div>
-                                        )}
-                                    </div>
-                                ))}
-                            </>
-                        ) : (
-                            <div style={{ padding: '1rem', textAlign: 'center', color: 'var(--light_50)' }}>
-                                No games played yet
-                            </div>
-                        )}
-                    </div>
+                    {(currentGame && currentGame.rounds.length > 0) || gameHistory.length > 0 ? (
+                        <div id={styles.game_progress}>
+                            {/* Show current game if it has rounds, otherwise show most recent completed game */}
+                            {currentGame && currentGame.rounds.length > 0 ? (
+                                <>
+                                    <h3 id={styles.session_header}>Current Game</h3>
+                                    {currentGame.rounds.map((round, index) => (
+                                        <div key={`current-${index}`} className={`${styles.round} ${round.score === null ? styles.active : ''}`}>
+                                            <div className={styles.round_number}>{index + 1}</div>
+                                            <div className={styles.location_name}>{round.location?.description || 'Unknown location'}</div>
+                                            {round.score !== null && (
+                                                <div
+                                                    className={styles.round_score}
+                                                    style={{
+                                                        backgroundColor: (round.difference !== undefined || (round.answer !== undefined && round.guess !== undefined))
+                                                            ? `hsla(${Math.max(0, Math.min(125, (100 - (round.difference !== undefined ? round.difference : Math.abs(round.answer - round.guess))) * 1.25))}, 51%, 27%, 1)`
+                                                            : `hsla(${Math.max(0, Math.min(125, (round.score / 100) * 125))}, 51%, 27%, 1)`
+                                                    }}
+                                                >
+                                                    {round.difference !== undefined 
+                                                        ? (100 - round.difference)
+                                                        : (round.answer !== undefined && round.guess !== undefined)
+                                                            ? (100 - Math.abs(round.answer - round.guess))
+                                                            : round.score}
+                                                </div>
+                                            )}
+                                        </div>
+                                    ))}
+                                </>
+                            ) : (
+                                <>
+                                    <h3 id={styles.session_header}>Last Game - {new Date(gameHistory[gameHistory.length - 1].datetime).toLocaleDateString()}</h3>
+                                    {gameHistory[gameHistory.length - 1].rounds.map((round, index) => (
+                                        <div key={`history-${index}`} className={styles.round}>
+                                            <div className={styles.round_number}>{index + 1}</div>
+                                            <div className={styles.location_name}>{round.location?.description || 'Unknown location'}</div>
+                                            {round.score !== null && (
+                                                <div
+                                                    className={styles.round_score}
+                                                    style={{
+                                                        backgroundColor: (round.difference !== undefined || (round.answer !== undefined && round.guess !== undefined))
+                                                            ? `hsla(${Math.max(0, Math.min(125, (100 - (round.difference !== undefined ? round.difference : Math.abs(round.answer - round.guess))) * 1.25))}, 51%, 27%, 1)`
+                                                            : `hsla(${Math.max(0, Math.min(125, (round.score / 100) * 125))}, 51%, 27%, 1)`
+                                                    }}
+                                                >
+                                                    {round.difference !== undefined 
+                                                        ? (100 - round.difference)
+                                                        : (round.answer !== undefined && round.guess !== undefined)
+                                                            ? (100 - Math.abs(round.answer - round.guess))
+                                                            : round.score}
+                                                </div>
+                                            )}
+                                        </div>
+                                    ))}
+                                </>
+                            )}
+                        </div>
+                    ) : null}
 
                     <footer>
                         <p 
