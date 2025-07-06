@@ -109,8 +109,11 @@ const BottomBar = ({ tvStaticRef, streetViewRef, setCurrentRound, currentRound, 
         .then(json => {
             console.log('Score received:', json); 
             
-            // Update current round with score (this will trigger the useEffect in App.jsx)
-            setCurrentRound({...currentRound, guess, score: json.score, answer: json.answer});
+            // Calculate the raw difference without ± symbol
+            const rawDifference = Math.abs(json.answer - guess);
+            
+            // Update current round with score, answer, guess, and raw difference
+            setCurrentRound({...currentRound, guess, score: json.score, answer: json.answer, difference: rawDifference});
             
             // Start the transition to new round after score is received
             if (tvStaticRef?.current) {

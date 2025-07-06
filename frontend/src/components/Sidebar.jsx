@@ -107,10 +107,16 @@ const Sidebar = ({ gameHistory, currentGame, onNewGame }) => {
                                             <div
                                                 className={styles.round_score}
                                                 style={{
-                                                    backgroundColor: `hsla(${Math.max(0, Math.min(125, (round.score / 100) * 125))}, 51%, 27%, 1)`
+                                                    backgroundColor: (round.difference !== undefined || (round.answer !== undefined && round.guess !== undefined))
+                                                        ? `hsla(${Math.max(0, Math.min(125, (100 - (round.difference !== undefined ? round.difference : Math.abs(round.answer - round.guess))) * 1.25))}, 51%, 27%, 1)`
+                                                        : `hsla(${Math.max(0, Math.min(125, (round.score / 100) * 125))}, 51%, 27%, 1)`
                                                 }}
                                             >
-                                                {round.score}
+                                                {round.difference !== undefined 
+                                                    ? round.difference
+                                                    : (round.answer !== undefined && round.guess !== undefined)
+                                                        ? Math.abs(round.answer - round.guess)
+                                                        : round.score}
                                             </div>
                                         )}
                                     </div>
@@ -127,10 +133,16 @@ const Sidebar = ({ gameHistory, currentGame, onNewGame }) => {
                                             <div
                                                 className={styles.round_score}
                                                 style={{
-                                                    backgroundColor: `hsla(${Math.max(0, Math.min(125, (round.score / 100) * 125))}, 51%, 27%, 1)`
+                                                    backgroundColor: (round.difference !== undefined || (round.answer !== undefined && round.guess !== undefined))
+                                                        ? `hsla(${Math.max(0, Math.min(125, (100 - (round.difference !== undefined ? round.difference : Math.abs(round.answer - round.guess))) * 1.25))}, 51%, 27%, 1)`
+                                                        : `hsla(${Math.max(0, Math.min(125, (round.score / 100) * 125))}, 51%, 27%, 1)`
                                                 }}
                                             >
-                                                {round.score}
+                                                {round.difference !== undefined 
+                                                    ? round.difference
+                                                    : (round.answer !== undefined && round.guess !== undefined)
+                                                        ? Math.abs(round.answer - round.guess)
+                                                        : round.score}
                                             </div>
                                         )}
                                     </div>

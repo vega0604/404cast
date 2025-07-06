@@ -16,11 +16,9 @@
     border-radius: 0.5rem;
     padding: 1rem;
     max-width: 90vw;
-    max-height: 80vh;
-    overflow-y: auto;
     z-index: 1001;
     animation: slideIn 0.2s ease-out;
-    min-width: 24rem;
+    min-width: 28rem;
 }
 
 .title {
@@ -105,13 +103,21 @@
     white-space: nowrap;
 }
 
+.date {
+    font-size: 0.75rem;
+    color: var(--light_70);
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
 .score {
     font-size: 0.75rem;
     font-weight: 400;
-    color: var(--light);
-    padding: 0 0.375rem;
+    color: var(--accent);
+    padding: 0.5rem 0.75rem;
     border-radius: 0.25rem;
-    background: var(--accent);
+    background: var(--hover);
     min-width: 2rem;
     text-align: center;
 }

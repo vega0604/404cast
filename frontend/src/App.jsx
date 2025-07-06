@@ -6,6 +6,7 @@ import TopBar from '@components/TopBar'
 import TVStatic from '@components/TVStatic'
 import BottomBar from './components/BottomBar'
 import PWAUpdater from './components/PWAUpdater'
+import UsernameModal from './components/UsernameModal'
 import { Toaster, toast } from 'sonner'
 
 function App() {
@@ -30,6 +31,8 @@ function App() {
 
     const [roundStreak, setRoundStreak] = useState(0);
     const [roundStartTime, setRoundStartTime] = useState(Date.now())
+    const [showUsernameModal, setShowUsernameModal] = useState(false);
+    const [pendingGameForUsername, setPendingGameForUsername] = useState(null);
 
     useEffect(() => {
         function loadGameHistory() {
@@ -57,31 +60,48 @@ function App() {
             .catch(err => console.error(err))
         }
 
+        function checkUsername() {
+            const cachedUsername = localStorage.getItem('username');
+            if (cachedUsername) {
+                setCurrentGame(prev => ({
+                    ...prev,
+                    user_name: cachedUsername
+                }));
+            }
+        }
+
         loadGameHistory()
         loadLeaderboards()
+        checkUsername()
     }, [])
 
 
     function updateLeaderboards(game){
-        let date = game.datetime
-        let name = game.user_name
-        let score = game.rounds.reduce((prev, curr) => prev + curr.score)
+        let name = game.user_name || 'Anonymous'
+        let score = game.rounds.reduce((prev, curr) => prev + curr.score, 0)
 
         fetch(`${baseURL}/leaderboards`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
             },
-            body: JSON.stringify({date, name, score}),
+            body: JSON.stringify({fullname: name, score: score}),
             mode: 'cors'
         }).then(res => res.json())
-        .then(json => setLeaderboard(json))
+        .then(json => {
+            console.log('Leaderboard updated:', json);
+            // Clear leaderboard cache to force refresh
+            localStorage.removeItem('leaderboardCache');
+            localStorage.removeItem('leaderboardCacheTimestamp');
+            // Refresh leaderboard data
+            loadLeaderboards();
+        })
         .catch(err => console.error(err))
     }
 
     function startNewGame() {
-        // Save current game to history if it has rounds
-        if (currentGame.rounds.length > 0) {
+        // Save current game to history only if it completed all 10 rounds
+        if (currentGame.rounds.length >= 10) {
             const updatedHistory = [...gameHistory, currentGame];
             setGameHistory(updatedHistory);
             localStorage.setItem('gameHistory', JSON.stringify(updatedHistory));
@@ -139,6 +159,52 @@ function App() {
         });
     }
 
+    function handleUsernameSubmit(username) {
+        // Cache the username
+        localStorage.setItem('username', username);
+        
+        // Update current game with username
+        setCurrentGame(prev => ({
+            ...prev,
+            user_name: username
+        }));
+        
+        // If there's a pending game, complete it with the username
+        if (pendingGameForUsername) {
+            const gameWithUsername = {
+                ...pendingGameForUsername,
+                user_name: username
+            };
+            
+            // Save to history
+            setGameHistory(prevHistory => {
+                const updatedHistory = [...prevHistory, gameWithUsername];
+                localStorage.setItem('gameHistory', JSON.stringify(updatedHistory));
+                return updatedHistory;
+            });
+            
+            // Update leaderboards
+            updateLeaderboards(gameWithUsername);
+            
+            // Show game completion toast
+            const totalScore = gameWithUsername.rounds.reduce((sum, round) => sum + round.score, 0);
+            toast.success(`Game Complete! Total Score: ${totalScore}`, {
+                duration: 5000,
+                description: 'Starting new game...'
+            });
+            
+            // Clear pending game
+            setPendingGameForUsername(null);
+        }
+        
+        // Close the modal
+        setShowUsernameModal(false);
+        
+        toast.success(`Welcome, ${username}!`, {
+            duration: 3000
+        });
+    }
+
     useEffect(() => {
         // Only process if we have a completed round (with a score)
         if (currentRound.score !== null) {
@@ -149,33 +215,49 @@ function App() {
                 
                 // Check if we've reached 10 rounds (game complete)
                 if (updatedRounds.length >= 10) {
-                    // Game is complete - save to history and reset
-                    setGameHistory(prevHistory => {
-                        const updatedHistory = [...prevHistory, updatedGame];
-                        localStorage.setItem('gameHistory', JSON.stringify(updatedHistory));
-                        return updatedHistory;
-                    });
+                    // Check if user has a cached username
+                    const cachedUsername = localStorage.getItem('username');
                     
-                    // Update leaderboards
-                    updateLeaderboards(updatedGame);
-                    
-                    // Show game completion toast
-                    const totalScore = updatedRounds.reduce((sum, round) => sum + round.score, 0);
-                    toast.success(`Game Complete! Total Score: ${totalScore}`, {
-                        duration: 5000,
-                        description: 'Starting new game...'
-                    });
-                    
-                    // Reset round streak and start time for new game
-                    setRoundStreak(0);
-                    setRoundStartTime(Date.now());
-                    
-                    // Return new game state
-                    return {
-                        datetime: new Date(),
-                        user_name: prevGame.user_name,
-                        rounds: []
-                    };
+                    if (cachedUsername) {
+                        // User has username - complete game normally
+                        setGameHistory(prevHistory => {
+                            const updatedHistory = [...prevHistory, updatedGame];
+                            localStorage.setItem('gameHistory', JSON.stringify(updatedHistory));
+                            return updatedHistory;
+                        });
+                        
+                        // Update leaderboards
+                        updateLeaderboards(updatedGame);
+                        
+                        // Show game completion toast
+                        const totalScore = updatedRounds.reduce((sum, round) => sum + round.score, 0);
+                        toast.success(`Game Complete! Total Score: ${totalScore}`, {
+                            duration: 5000,
+                            description: 'Starting new game...'
+                        });
+                        
+                        // Reset round streak and start time for new game
+                        setRoundStreak(0);
+                        setRoundStartTime(Date.now());
+                        
+                        // Return new game state
+                        return {
+                            datetime: new Date(),
+                            user_name: cachedUsername,
+                            rounds: []
+                        };
+                    } else {
+                        // No username - show modal to get username
+                        setPendingGameForUsername(updatedGame);
+                        setShowUsernameModal(true);
+                        
+                        // Return new game state (will be updated when username is submitted)
+                        return {
+                            datetime: new Date(),
+                            user_name: null,
+                            rounds: []
+                        };
+                    }
                 } else {
                     // Game continues - return updated game
                     return updatedGame;
@@ -223,6 +305,10 @@ function App() {
                 roundStartTime={roundStartTime}
             />
             <PWAUpdater />
+            <UsernameModal 
+                isOpen={showUsernameModal} 
+                onUsernameSubmit={handleUsernameSubmit}
+            />
             <Toaster 
                 position="bottom-right"
                 toastOptions={{

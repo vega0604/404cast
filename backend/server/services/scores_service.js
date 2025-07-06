@@ -21,16 +21,39 @@ console.log(coordsHoodMap)
 
 // Points calculation function (returns score)
 function calculateScore(lat, long, streak, time, guess, timeFactor = 0.8, streakFactor = 0.5) {
-    // Simple formula: streakBoost + timeBoost + basePoints
-    const baseFactor = 100; // Add missing baseFactor variable
-
     const hood = getHood(lat, long);
     const risk = getRiskRating(hood);
-    const diff = guess - risk;
-    const streakBoost = streak * streakFactor;
-    const timeBoost = time * timeFactor * (streak + 0.001);
-    const basePoints = 1 / (Math.abs(diff) + 0.001) * baseFactor;
-    return {score: Math.round(streakBoost + timeBoost + basePoints), answer: risk};
+    const diff = Math.abs(guess - risk);
+    
+    // Base score calculation based on accuracy (0-100 scale)
+    // Perfect guess (diff = 0) = 100 points
+    // Maximum difference (diff = 100) = 10 points
+    const accuracyScore = Math.max(10, 100 - diff);
+    
+    // Streak bonus: rewards consecutive correct guesses (0-100 points)
+    const streakBonus = Math.min(100, streak * 20);
+    
+    // Time bonus: only applies if the guess is accurate (small difference)
+    // No time bonus for inaccurate guesses
+    let timeBonus = 0;
+    if (diff <= 20) { // Only give time bonus for reasonably accurate guesses
+        // Faster is better (0-50 points)
+        // Assuming time is in seconds, max bonus for very fast guesses
+        timeBonus = Math.max(0, Math.min(50, (30 - time) * 2));
+    }
+    
+    // Calculate total score
+    const totalScore = accuracyScore + timeBonus + streakBonus;
+    
+    return {
+        score: Math.round(totalScore), 
+        answer: risk,
+        breakdown: {
+            accuracy: Math.round(accuracyScore),
+            timeBonus: Math.round(timeBonus),
+            streakBonus: Math.round(streakBonus)
+        }
+    };
 }
 
 function getHood(lat, long) {

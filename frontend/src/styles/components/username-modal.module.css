@@ -1,0 +1,112 @@
+.overlay {
+    position: fixed;
+    inset: 0;
+    background-color: rgba(0, 0, 0, 0.8);
+    z-index: 1000;
+    animation: fadeIn 0.2s ease-out;
+}
+
+.content {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: linear-gradient(135deg, #2C336D 0%, #233D5F 100%);
+    border: 1px solid #2D5987;
+    border-radius: 12px;
+    padding: 2rem;
+    width: 90%;
+    max-width: 400px;
+    z-index: 1001;
+    animation: slideIn 0.3s ease-out;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+}
+
+.title {
+    margin: 0 0 1rem 0;
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: #fff;
+    text-align: center;
+}
+
+.description {
+    margin: 0 0 1.5rem 0;
+    color: #B8C5D6;
+    text-align: center;
+    line-height: 1.5;
+    font-size: 0.9rem;
+}
+
+.form {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.input {
+    padding: 0.75rem 1rem;
+    border: 1px solid #2D5987;
+    border-radius: 8px;
+    background: rgba(255, 255, 255, 0.1);
+    color: #fff;
+    font-size: 1rem;
+    outline: none;
+    transition: border-color 0.2s ease;
+}
+
+.input::placeholder {
+    color: #8BA3C7;
+}
+
+.input:focus {
+    border-color: #4A90E2;
+    box-shadow: 0 0 0 2px rgba(74, 144, 226, 0.2);
+}
+
+.submit_button {
+    padding: 0.75rem 1.5rem;
+    background: linear-gradient(135deg, #4A90E2 0%, #357ABD 100%);
+    border: none;
+    border-radius: 8px;
+    color: #fff;
+    font-size: 1rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.submit_button:hover:not(:disabled) {
+    background: linear-gradient(135deg, #5A9FE2 0%, #458ACD 100%);
+    transform: translateY(-1px);
+}
+
+.submit_button:active:not(:disabled) {
+    transform: translateY(0);
+}
+
+.submit_button:disabled {
+    background: #4A5568;
+    cursor: not-allowed;
+    opacity: 0.6;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translate(-50%, -60%);
+    }
+    to {
+        opacity: 1;
+        transform: translate(-50%, -50%);
+    }
+} 

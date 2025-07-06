@@ -18,9 +18,11 @@ router.get('', async (req, res) => {
     }
     
     // Calculate score for this round
-    const { score, answer } = calculateScore(latitude, longitude, streak, time, guess);
-    console.log(score, answer);
-    res.status(200).json({ score, answer });
+    const { score, answer, breakdown } = calculateScore(latitude, longitude, streak, time, guess);
+    const difference = Math.abs(guess - answer);
+    
+    console.log('Score calculation:', { score, answer, breakdown, difference });
+    res.status(200).json({ score, answer, breakdown, difference });
   } catch (error) {
     res.status(500).json({ error: error.message });
   }
