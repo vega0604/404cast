@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const { calculateScore } = require('@services/scores_service');
+const { calculateScore } = require('../../services/scores_service');
 
 
 // GET score (user submits a prediction)

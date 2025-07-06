@@ -1,4 +1,3 @@
-require('module-alias/register')
 require('dotenv').config();
 const express = require("express");
 const cors = require('cors');
@@ -21,9 +20,9 @@ mongoose.connection.on('error', (err) => {
 });
 
 // Import routers
-const leaderboardsRouter = require('@routers/leaderboards');
-const scoresRouter = require('@routers/scores');
-const likesRouter = require('@routers/likes');
+const leaderboardsRouter = require('./routers/leaderboards');
+const scoresRouter = require('./routers/scores');
+const likesRouter = require('./routers/likes');
 
 // Middleware
 app.use(express.json());

@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const { Leaderboard } = require('@services/leaderboards_service');
+const { Leaderboard } = require('../../services/leaderboards_service');
 
 // GET leaderboards
 router.get('', async (req, res) => {
