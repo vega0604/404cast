@@ -4,10 +4,10 @@ import { useState, useEffect, useImperativeHandle, forwardRef } from 'react';
 const API_KEY = import.meta.env.VITE_GOOGLE_MAPS_API_KEY;
 
 const TORONTO_BOUNDS = {
-  north: 43.855457, // Northern boundary
-  south: 43.580573, // Southern boundary  
-  east: -79.115204,  // Eastern boundary
-  west: -79.639219   // Western boundary
+  north: 43.750000, // Northern boundary (around Lawrence Ave)
+  south: 43.620000, // Southern boundary (around Lake Ontario)
+  east: -79.300000,  // Eastern boundary (around Victoria Park Ave)
+  west: -79.500000   // Western boundary (around Jane St)
 };
 
 const StreetView = forwardRef(({ setCurrentRound, currentRound }, ref) => {
