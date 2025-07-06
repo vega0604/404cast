@@ -34,20 +34,6 @@ const PWAUpdater = () => {
       },
       onOfflineReady() {
         setOfflineReady(true)
-        toast('App ready to work offline', {
-          description: 'You can now use the app without internet',
-          duration: 5000,
-          position: 'bottom-right',
-          style: {
-            background: '#000',
-            color: '#fff',
-            border: '1px solid #333',
-            borderRadius: '8px',
-            boxShadow: '0 4px 12px rgba(0,0,0,0.3)',
-            minWidth: '280px',
-            maxWidth: '320px'
-          }
-        })
       },
       onRegistered(swRegistration) {
         // You can send swRegistration anywhere you want, for example:
@@ -72,7 +58,6 @@ const PWAUpdater = () => {
     })
   }, [])
 
-  // Don't render anything - Sonner handles the UI
   return null
 }
 
