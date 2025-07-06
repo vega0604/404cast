@@ -58,3 +58,26 @@
 #topbar .misc_button:focus img {
     opacity: 1;
 }
+
+/* || RESPONSIVE */
+@media screen and (max-width: 710px) {
+    #topbar {
+        top: var(--inset_margin);
+        width: calc(100vw - (var(--inset_margin) * 2));
+        flex-wrap: wrap;
+    }
+
+    #progress_card {
+        width: 100%;
+        margin-left: 0rem;
+        justify-content: space-between;
+    }
+    #topbar .misc_button {
+        order: 2;
+    }
+
+    #topbar img {
+        display: none;
+    }
+
+}

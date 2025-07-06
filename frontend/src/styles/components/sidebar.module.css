@@ -296,3 +296,22 @@
         transform: translateY(0);
     }
 }
+
+/* || RESPONSIVE */
+@media screen and (max-width: 1040px) {
+    #game_progress {
+        display: none;
+    }
+}
+
+@media screen and (max-width: 710px) {
+    #sidebar {
+        top: calc((var(--inset_margin) * 4) + 3.25rem);
+        min-width: calc(100vw - (var(--inset_margin) * 2));
+    }
+
+    #sidebar #header {
+        width: 100%;
+    }
+}
+

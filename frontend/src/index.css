@@ -41,6 +41,13 @@
     --inset_margin: 1.125rem;
 }
 
+@media (max-width: 1040px) {
+    :root {
+        --inset_margin: 0.5rem;
+    }
+}
+
+
 html,
 body {
     width: 100%;
