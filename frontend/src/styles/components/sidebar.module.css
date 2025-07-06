@@ -127,7 +127,7 @@
 }
 
 .action:active {
-    scale: 0.95;
+    scale: 0.975;
     background-color: var(--border);    
 }
 
