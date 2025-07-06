@@ -19,15 +19,17 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 0.75rem;
+    gap: clamp(0.5rem, 2vw, 0.75rem);
     align-self: stretch;
+    width: min(100%, calc(100vw - 2rem));
 }
 
 .slider {
     position: relative;
     display: flex;
     align-items: center;
-    width: 21.875rem;
+    width: min(21.875rem, calc(100vw - 4rem));
+    min-width: 15rem;
     height: 0.75rem;
 }
 
@@ -53,8 +55,8 @@
 
 .slider_thumb {
     display: block;
-    width: 1.75rem;
-    height: 1.75rem;
+    width: clamp(1.25rem, 4vw, 1.75rem);
+    height: clamp(1.25rem, 4vw, 1.75rem);
     border: 1.25px solid var(--dark_20);
     background-color: var(--light);
     border-radius: 50%;
@@ -209,5 +211,30 @@
 @media screen and (max-width: 710px) {
     #bottombar {
         margin-bottom: 2rem;
+        left: 1rem;
+        right: 1rem;
+        bottom: 1rem;
+    }
+    
+    #slider_container {
+        gap: 0.5rem;
+        width: 100%;
+        max-width: calc(100vw - 2rem);
+    }
+    
+    .slider {
+        width: 100%;
+        max-width: calc(100vw - 4rem);
+        min-width: 200px;
+    }
+    
+    .slider_thumb {
+        width: 1.5rem;
+        height: 1.5rem;
+    }
+    
+    #guess_button {
+        padding: 0.5rem 0.875rem;
+        font-size: 1rem;
     }
 }
