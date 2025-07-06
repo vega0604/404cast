@@ -40,17 +40,28 @@ const StreetView = () => {
         mapContainerStyle={{ width: '100vw', height: '100vh' }}
         center={center}
         zoom={14}
-        options={{ streetViewControl: false, mapTypeControl: false }}
+        mapContainerClassName="google-map-container"
+        options={{
+          streetViewControl: false,
+          mapTypeControl: false,
+          disableDefaultUI: true,
+          gestureHandling: 'none'
+        }}
       >
         <StreetViewPanorama
           position={center}
-          visible
-                    options={{ 
+          visible options={{
             pov: { heading: 0, pitch: 0 },
             addressControl: false,
-            enableCloseButton: false
+            fullscreenControl: false,
+            motionTrackingControl: false,
+            panControl: false,
+            enableCloseButton: false,
+            clickToGo: false,
+            zoomControl: true,
+            scrollwheel: true
           }}
-          containerStyle={{ width: '100vw', height: '100vh' }} 
+          containerStyle={{ width: '100vw', height: '100vh' }}
         />
       </GoogleMap>
     </LoadScript>

@@ -72,3 +72,15 @@ a {
     text-decoration: none;
     color: inherit;
 }
+
+.gmnoprint {
+    display: none !important;
+}
+
+[class*="gm-style-cc"] {
+    display: none !important;
+}
+
+[class*="gm-style"] div[style*="position: absolute"][style*="bottom"] {
+    display: none !important;
+}
