@@ -7,9 +7,8 @@ import leaderboard from '@assets/images/icons/leaderboard.svg';
 import heart from '@assets/images/icons/heart.svg';
 import { useState, useEffect } from 'react';
 import * as Tooltip from '@radix-ui/react-tooltip';
-import { gameProgress } from '@data/gameProgress';
 
-const Sidebar = () => {
+const Sidebar = ({ gameProgress }) => {
     const [likeCount, setLikeCount] = useState(() => {
         const cached = localStorage.getItem('likeCount');
         return cached ? parseInt(cached, 10) : 0;
