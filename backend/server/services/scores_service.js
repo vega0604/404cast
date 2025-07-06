@@ -1,21 +1,3 @@
-const mongoose = require('mongoose');
-
-// Define the schema for scores (only fullname and score)
-const scoreSchema = new mongoose.Schema({
-  fullname: {
-    type: String,
-    required: true
-  },
-  score: {
-    type: Number,
-    required: true
-  }
-}, {
-  timestamps: true
-});
-
-const Score = mongoose.model('Score', scoreSchema);
-
 // Points calculation function (returns score)
 function calculateScore({ streak, diff, timeToGuess, streakFactor = 2, timeFactor = 0.1, baseFactor = 100 }) {
   // Simple formula: streakBoost + timeBoost + basePoints
@@ -26,6 +8,5 @@ function calculateScore({ streak, diff, timeToGuess, streakFactor = 2, timeFacto
 }
 
 module.exports = {
-  Score,
   calculateScore
 };

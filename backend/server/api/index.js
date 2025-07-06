@@ -1,10 +1,11 @@
+require('dotenv').config();
 const express = require("express");
 const cors = require('cors');
 const mongoose = require('mongoose');
 const app = express();
 
 // Connect to MongoDB
-const conn_string = 'mongodb+srv://admin:xEExa9A6G0xuYSC3@notfound.fi3bmfs.mongodb.net/?retryWrites=true&w=majority&appName=NotFound';
+const conn_string = process.env.MONGODB_URI || 'mongodb://localhost:27017/404cast';
 mongoose.connect(conn_string, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
@@ -36,6 +37,7 @@ app.use('/api/likes', likesRouter);
 
 app.get("/", (req, res) => res.send("Express on Vercel"));
 
-app.listen(3000, () => console.log("Server ready on port 3000."));
+const PORT = process.env.PORT || 3000;
+app.listen(PORT, () => console.log(`Server ready on port ${PORT}.`));
 
 module.exports = app;

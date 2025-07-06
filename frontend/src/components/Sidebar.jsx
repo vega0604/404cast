@@ -5,7 +5,7 @@ import sidebar from '@assets/images/icons/sidebar.svg';
 import play from '@assets/images/icons/play.svg';
 import leaderboard from '@assets/images/icons/leaderboard.svg';
 import heart from '@assets/images/icons/heart.svg';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import * as Tooltip from '@radix-ui/react-tooltip';
 
 const gameProgress = {
@@ -27,19 +27,54 @@ const Sidebar = () => {
     const [showTooltip, setShowTooltip] = useState(false);
     const [tooltipTimeout, setTooltipTimeout] = useState(null);
     const [isCollapsed, setIsCollapsed] = useState(false);
+    const [isLoading, setIsLoading] = useState(false);
+
+    // Fetch initial likes count on component mount
+    useEffect(() => {
+        fetchLikesCount();
+    }, []);
+
+    const fetchLikesCount = async () => {
+        try {
+            const response = await fetch('/api/likes');
+            const data = await response.json();
+            setLikeCount(data.count);
+        } catch (error) {
+            console.error('Error fetching likes count:', error);
+        }
+    };
 
     const handleSidebarToggle = () => {
         setIsCollapsed(!isCollapsed);
     };
 
-    const handleLikeClick = () => {
-        setLikeCount(prevCount => prevCount + 1);
-        setShowTooltip(true);
-
-        if (tooltipTimeout) clearTimeout(tooltipTimeout);
-
-        const newTimeout = setTimeout(() => setShowTooltip(false), 750);
-        setTooltipTimeout(newTimeout);
+    const handleLikeClick = async () => {
+        if (isLoading) return; // Prevent multiple clicks
+        
+        setIsLoading(true);
+        
+        try {
+            const response = await fetch('/api/likes/increment', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+            });
+            
+            const data = await response.json();
+            setLikeCount(data.count);
+            
+            // Show tooltip
+            setShowTooltip(true);
+            if (tooltipTimeout) clearTimeout(tooltipTimeout);
+            const newTimeout = setTimeout(() => setShowTooltip(false), 750);
+            setTooltipTimeout(newTimeout);
+            
+        } catch (error) {
+            console.error('Error incrementing likes:', error);
+        } finally {
+            setIsLoading(false);
+        }
     };
 
     return (
