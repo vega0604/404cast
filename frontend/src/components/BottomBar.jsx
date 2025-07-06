@@ -3,17 +3,72 @@ import good from '@assets/images/icons/good.svg';
 import bad from '@assets/images/icons/bad.svg';
 import * as Slider from '@radix-ui/react-slider';
 import * as Tooltip from '@radix-ui/react-tooltip';
-import { useState } from 'react';
+import { useState, useEffect, useRef } from 'react';
 
 const BottomBar = ({ tvStaticRef, streetViewRef }) => {
     const [value, setValue] = useState([50]);
     const [isSubmitting, setIsSubmitting] = useState(false);
+    const [goodWiggle, setGoodWiggle] = useState(false);
+    const [badWiggle, setBadWiggle] = useState(false);
+    const goodWiggleTimeoutRef = useRef(null);
+    const badWiggleTimeoutRef = useRef(null);
+
+    const handleSliderValueChange = (newValue) => {
+        setValue(newValue);
+        
+        const currentValue = newValue[0];
+        
+        // Trigger good icon wiggle when crossing 25% threshold
+        if (currentValue <= 25 && !goodWiggle) {
+            if (goodWiggleTimeoutRef.current) clearTimeout(goodWiggleTimeoutRef.current);
+            
+            setGoodWiggle(true);
+            goodWiggleTimeoutRef.current = setTimeout(() => {
+                setGoodWiggle(false);
+                goodWiggleTimeoutRef.current = null;
+            }, 800);
+        } else if (currentValue > 25) {
+            setGoodWiggle(false);
+            if (goodWiggleTimeoutRef.current) {
+                clearTimeout(goodWiggleTimeoutRef.current);
+                goodWiggleTimeoutRef.current = null;
+            }
+        }
+        
+        // Trigger bad icon wiggle when crossing 75% threshold
+        if (currentValue >= 75 && !badWiggle) {
+            if (badWiggleTimeoutRef.current) clearTimeout(badWiggleTimeoutRef.current);
+            
+            setBadWiggle(true);
+            badWiggleTimeoutRef.current = setTimeout(() => {
+                setBadWiggle(false);
+                badWiggleTimeoutRef.current = null;
+            }, 800);
+        } else if (currentValue < 75) {
+            setBadWiggle(false);
+            if (badWiggleTimeoutRef.current) {
+                clearTimeout(badWiggleTimeoutRef.current);
+                badWiggleTimeoutRef.current = null;
+            }
+        }
+    };
+
+    useEffect(() => {
+        return () => {
+            if (goodWiggleTimeoutRef.current) {
+                clearTimeout(goodWiggleTimeoutRef.current);
+            }
+            if (badWiggleTimeoutRef.current) {
+                clearTimeout(badWiggleTimeoutRef.current);
+            }
+        };
+    }, []);
 
     // Function to trigger round transition and load new location
     const handleGuessSubmit = (event) => {
-        event.preventDefault(); // Prevent form submission/page reload
+        event.preventDefault();
         
-        if (isSubmitting) return; // Prevent double clicks
+        if (isSubmitting) return;
         
         setIsSubmitting(true);
         
@@ -38,11 +93,15 @@ const BottomBar = ({ tvStaticRef, streetViewRef }) => {
         <Tooltip.Provider delayDuration={100}>
             <div id={styles.bottombar}>
                 <div id={styles.slider_container}>
-                    <img src={good} alt="Safe icon"/>
+                    <img 
+                        src={good} 
+                        alt="Safe icon"
+                        className={goodWiggle ? styles.wiggle : ''}
+                    />
                     <Slider.Root
                         className={styles.slider}
                         value={value}
-                        onValueChange={setValue}
+                        onValueChange={handleSliderValueChange}
                         onValueCommit={() => {}}
                         max={100}
                         min={0}
@@ -64,7 +123,11 @@ const BottomBar = ({ tvStaticRef, streetViewRef }) => {
                             </Tooltip.Portal>
                         </Tooltip.Root>
                     </Slider.Root>
-                    <img src={bad} alt="Danger icon"/>
+                    <img 
+                        src={bad} 
+                        alt="Danger icon"
+                        className={badWiggle ? styles.wiggle : ''}
+                    />
                 </div>
                 <button 
                     id={styles.guess_button}

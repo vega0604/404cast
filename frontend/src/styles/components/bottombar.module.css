@@ -180,6 +180,30 @@
     scale: 0.95;
 }
 
+.wiggle {
+    animation: wiggle 0.8s ease-in-out;
+}
+
+@keyframes wiggle {
+    0%, 100% {
+        transform: rotate(0deg);
+        scale: 1;
+    }
+    25% {
+        transform: rotate(-8deg);
+        scale: 1.05;
+    }
+    50% {
+        transform: rotate(8deg);
+        scale: 1.05;
+    }
+    75% {
+        transform: rotate(-4deg);
+        scale: 1;
+
+    }
+}
+
 /* || RESPONSIVE */
 @media screen and (max-width: 710px) {
     #bottombar {
