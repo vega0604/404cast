@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const likesService = require('../../services/likes_service');
+const likesService = require('@services/likes_service');
 
 // GET likes count
 router.get('/', async (req, res) => {

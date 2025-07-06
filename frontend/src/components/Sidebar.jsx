@@ -9,7 +9,7 @@ import { useState, useEffect } from 'react';
 import * as Tooltip from '@radix-ui/react-tooltip';
 import Leaderboard from './Leaderboard';
 
-const Sidebar = ({ gameProgress }) => {
+const Sidebar = ({ gameHistory, currentGame, onNewGame }) => {
     const [likeCount, setLikeCount] = useState(() => {
         const cached = localStorage.getItem('likeCount');
         return cached ? parseInt(cached, 10) : 0;
@@ -22,11 +22,14 @@ const Sidebar = ({ gameProgress }) => {
 
     useEffect(() => {
         fetchLikesCount();
+        
     }, []);
+    const baseURL = import.meta.env.VITE_BACKEND_BASE;
 
     const fetchLikesCount = async () => {
+        const url = `${baseURL}/likes`;
         try {
-            const response = await fetch('/api/likes');
+            const response = await fetch(url);
             const data = await response.json();
             setLikeCount(data.count);
             localStorage.setItem('likeCount', data.count.toString());
@@ -42,9 +45,10 @@ const Sidebar = ({ gameProgress }) => {
     const handleLikeClick = async () => {
         if (isLoading) return;
         setIsLoading(true);
-
+        console.log(baseURL)
+        const url = `${baseURL}/likes/increment`;
         try {
-            const response = await fetch('/api/likes/increment', {
+            const response = await fetch(url, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -80,7 +84,7 @@ const Sidebar = ({ gameProgress }) => {
             {!isCollapsed && (
                 <>
                     <div id={styles.actions}>
-                        <div className={styles.action}>
+                        <div className={styles.action} onClick={onNewGame}>
                             <img src={play} alt="Play icon" />
                             <h2>New Game</h2>
                         </div>
@@ -91,23 +95,52 @@ const Sidebar = ({ gameProgress }) => {
                     </div>
 
                     <div id={styles.game_progress}>
-                        <h3 id={styles.session_header}>{gameProgress.sessionDate}</h3>
-                        {gameProgress.rounds.map((round, index) => (
-                            <div key={index} className={`${styles.round} ${round.score === null ? styles.active : ''}`}>
-                                <div className={styles.round_number}>{round.round}</div>
-                                <div className={styles.location_name}>{round.location}</div>
-                                {round.score !== null && (
-                                    <div
-                                        className={styles.round_score}
-                                        style={{
-                                            backgroundColor: `hsla(${Math.max(0, Math.min(125, (round.score / 100) * 125))}, 51%, 27%, 1)`
-                                        }}
-                                    >
-                                        {round.score}
+                        {/* Show current game if it has rounds, otherwise show most recent completed game */}
+                        {currentGame && currentGame.rounds.length > 0 ? (
+                            <>
+                                <h3 id={styles.session_header}>Current Game</h3>
+                                {currentGame.rounds.map((round, index) => (
+                                    <div key={`current-${index}`} className={`${styles.round} ${round.score === null ? styles.active : ''}`}>
+                                        <div className={styles.round_number}>{index + 1}</div>
+                                        <div className={styles.location_name}>{round.location?.description || 'Unknown location'}</div>
+                                        {round.score !== null && (
+                                            <div
+                                                className={styles.round_score}
+                                                style={{
+                                                    backgroundColor: `hsla(${Math.max(0, Math.min(125, (round.score / 100) * 125))}, 51%, 27%, 1)`
+                                                }}
+                                            >
+                                                {round.score}
+                                            </div>
+                                        )}
                                     </div>
-                                )}
+                                ))}
+                            </>
+                        ) : gameHistory.length > 0 ? (
+                            <>
+                                <h3 id={styles.session_header}>Last Game - {new Date(gameHistory[gameHistory.length - 1].datetime).toLocaleDateString()}</h3>
+                                {gameHistory[gameHistory.length - 1].rounds.map((round, index) => (
+                                    <div key={`history-${index}`} className={styles.round}>
+                                        <div className={styles.round_number}>{index + 1}</div>
+                                        <div className={styles.location_name}>{round.location?.description || 'Unknown location'}</div>
+                                        {round.score !== null && (
+                                            <div
+                                                className={styles.round_score}
+                                                style={{
+                                                    backgroundColor: `hsla(${Math.max(0, Math.min(125, (round.score / 100) * 125))}, 51%, 27%, 1)`
+                                                }}
+                                            >
+                                                {round.score}
+                                            </div>
+                                        )}
+                                    </div>
+                                ))}
+                            </>
+                        ) : (
+                            <div style={{ padding: '1rem', textAlign: 'center', color: 'var(--light_50)' }}>
+                                No games played yet
                             </div>
-                        ))}
+                        )}
                     </div>
 
                     <footer>

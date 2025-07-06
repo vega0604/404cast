@@ -1,9 +1,9 @@
 const express = require('express');
 const router = express.Router();
-const { Leaderboard } = require('../../services/leaderboards_service');
+const { Leaderboard } = require('@services/leaderboards_service');
 
 // GET leaderboards
-router.get('/', async (req, res) => {
+router.get('', async (req, res) => {
   try {
     const leaderboard = await Leaderboard.find().sort({ score: -1 });
     res.json({ leaderboard });
@@ -12,7 +12,7 @@ router.get('/', async (req, res) => {
   }
 });
 
-router.post('/', async (req, res) => {
+router.post('', async (req, res) => {
   try {
     const { fullname, score } = req.body;
     const entry = new Leaderboard({ fullname, score });

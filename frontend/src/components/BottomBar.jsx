@@ -5,13 +5,18 @@ import * as Slider from '@radix-ui/react-slider';
 import * as Tooltip from '@radix-ui/react-tooltip';
 import { useState, useEffect, useRef } from 'react';
 
-const BottomBar = ({ tvStaticRef, streetViewRef }) => {
+const BottomBar = ({ tvStaticRef, streetViewRef, setCurrentRound, currentRound, baseURL, roundStreak, roundStartTime}) => {
     const [value, setValue] = useState([50]);
     const [isSubmitting, setIsSubmitting] = useState(false);
     const [goodWiggle, setGoodWiggle] = useState(false);
     const [badWiggle, setBadWiggle] = useState(false);
     const goodWiggleTimeoutRef = useRef(null);
     const badWiggleTimeoutRef = useRef(null);
+
+    // Reset slider to 50 when currentRound changes (new round starts)
+    useEffect(() => {
+        setValue([50]);
+    }, [currentRound?.location]);
 
     const handleSliderValueChange = (newValue) => {
         setValue(newValue);
@@ -64,7 +69,7 @@ const BottomBar = ({ tvStaticRef, streetViewRef }) => {
         };
     }, []);
 
-    // Function to trigger round transition and load new location
+    // Function to submit guess and wait for score before starting new round
     const handleGuessSubmit = (event) => {
         event.preventDefault();
         
@@ -72,21 +77,53 @@ const BottomBar = ({ tvStaticRef, streetViewRef }) => {
         
         setIsSubmitting(true);
         
-        // Start the TV static transition with callback for when screen is covered
-        if (tvStaticRef?.current) {
-            tvStaticRef.current.startRoundTransition(() => {
-                // This callback runs when the screen is mostly covered by transition
-                console.log('🎬 Screen covered, generating new location...');
-                if (streetViewRef?.current) {
-                    streetViewRef.current.generateNewLocation();
-                }
-            });
+        console.log('🎯 Submitting guess:', value[0]);
+        console.log('Current round:', currentRound);
+        
+        // Check if currentRound and location exist
+        if (!currentRound || !currentRound.location) {
+            console.error('No location data available');
+            setIsSubmitting(false);
+            return;
         }
         
-        console.log('🎯 Starting new round with guess value:', value[0]);
+        let lat = currentRound.location.lat;
+        let long = currentRound.location.long;
+        let guess = value[0]; // Use the slider value as the guess
         
-        // Reset after 4 seconds (extended to account for delayed location change)
-        setTimeout(() => setIsSubmitting(false), 4000);
+        // Submit guess to backend
+        const url = new URL(`${baseURL}/scores`);
+        url.searchParams.append('lat', lat);
+        url.searchParams.append('long', long);
+        url.searchParams.append('guess', guess);
+        url.searchParams.append('streak', roundStreak);
+        url.searchParams.append('time', Date.now() - roundStartTime);
+
+        fetch(url, {
+            method: 'GET',
+            headers: {
+                'Accepts': 'application/json'
+            },
+            mode: 'cors'
+        }).then(res => res.json())
+        .then(json => {
+            console.log('Score received:', json); 
+            
+            // Update current round with score (this will trigger the useEffect in App.jsx)
+            setCurrentRound({...currentRound, guess, score: json.score, answer: json.answer});
+            
+            // Start the transition to new round after score is received
+            if (tvStaticRef?.current) {
+                tvStaticRef.current.startRoundTransition();
+            }
+            
+            // Reset submitting state after transition
+            setTimeout(() => setIsSubmitting(false), 2000);
+        })
+        .catch(err => {
+            console.error('Error submitting guess:', err);
+            setIsSubmitting(false);
+        });
     };
 
     return (

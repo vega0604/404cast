@@ -111,7 +111,7 @@ const TVStatic = forwardRef((_, ref) => {
             const currentTime = Date.now();
             const elapsed = startTimeRef.current ? currentTime - startTimeRef.current : 0;
             
-            console.log('Drawing frame:', { transitionState, elapsed, gridLength: squareGridRef.current.length });
+            // console.log('Drawing frame:', { transitionState, elapsed, gridLength: squareGridRef.current.length });
 
             squareGridRef.current.forEach(column => {
                 column.forEach(square => {

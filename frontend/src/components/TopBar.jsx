@@ -6,7 +6,7 @@ import speaker_muted from '@assets/images/icons/speaker_muted.svg'
 import AudioPlayer from '@components/AudioPlayer'
 import { toast } from 'sonner'
 
-const TopBar = ({ gameProgress }) => {
+const TopBar = ({ gameProgress, currentRound }) => {
     const [isMusicOn, setIsMusicOn] = useState(true);
 
     const toggleMusic = () => {
@@ -45,11 +45,14 @@ const TopBar = ({ gameProgress }) => {
                 <div id={styles.progress_card}>
                     <div className={styles.location}>
                         <div className={styles.label}>Location</div>
-                        {gameProgress.rounds.find(round => round.score === null)?.location || gameProgress.rounds[gameProgress.rounds.length - 1]?.location}
+                        {currentRound?.location?.description || 
+                         gameProgress.rounds.find(round => round.score === null)?.location?.description || 
+                         gameProgress.rounds[gameProgress.rounds.length - 1]?.location?.description || 
+                         'Unknown location'}
                     </div>
                     <div className={styles.round}>
                         <div className={styles.label}>Round</div>
-                        {gameProgress.rounds.find(round => round.score === null)?.round || gameProgress.rounds.length} / 10
+                        {gameProgress.rounds.length + 1} / 10
                     </div>
                     <div className={styles.points}>
                         <div className={styles.label}>Points</div>
