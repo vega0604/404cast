@@ -35,7 +35,9 @@
     flex-grow: 1;
     border-radius: 9999px;
     height: 100%;
-    border: 1px solid var(--dark_70);
+    border: 1.5px solid transparent;
+    background: linear-gradient(#000, #000) padding-box,
+                linear-gradient(to right, hsla(120, 44%, 40%, 1), hsla(0, 44%, 40%, 1)) border-box;
 }
 
 .slider_range {
