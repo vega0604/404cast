@@ -179,3 +179,10 @@
 #guess_button:active {
     scale: 0.95;
 }
+
+/* || RESPONSIVE */
+@media screen and (max-width: 710px) {
+    #bottombar {
+        margin-bottom: 2rem;
+    }
+}
