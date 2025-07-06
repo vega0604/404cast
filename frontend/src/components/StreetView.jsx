@@ -3,14 +3,30 @@ import { useState, useEffect } from 'react';
 
 const API_KEY = import.meta.env.VITE_GOOGLE_MAPS_API_KEY;
 
+const TORONTO_BOUNDS = {
+  north: 43.855457, // Northern boundary
+  south: 43.580573, // Southern boundary  
+  east: -79.115204,  // Eastern boundary
+  west: -79.639219   // Western boundary
+};
+
 const StreetView = () => {
   const [center, setCenter] = useState({
-    lat: 43.6532 + (Math.random() - 0.5) * 0.04,
-    lng: -79.3832 + (Math.random() - 0.5) * 0.04,
+    lat: 43.6532,
+    lng: -79.3832,
   });
 
   const [apiReady, setApiReady] = useState(false);
   const [locationData, setLocationData] = useState(null);
+
+  // Generate random coordinates within Toronto's actual boundaries
+  const generateRandomTorontoLocation = () => {
+    const lat = TORONTO_BOUNDS.south + Math.random() * (TORONTO_BOUNDS.north - TORONTO_BOUNDS.south);
+    const lng = TORONTO_BOUNDS.west + Math.random() * (TORONTO_BOUNDS.east - TORONTO_BOUNDS.west);
+    
+    console.log('🏘️ Generated random Toronto location:', { lat, lng });
+    return { lat, lng };
+  };
 
   // Fetch neighbourhood risk prediction
   const fetchLocationPrediction = async (lat, lng) => {
@@ -28,11 +44,15 @@ const StreetView = () => {
   const [captureDate, setCaptureDate] = useState(null);
 
   const generateNewLocation = () => {
-    setCenter({
-      lat: 43.6532 + (Math.random() - 0.5) * 0.04,
-      lng: -79.3832 + (Math.random() - 0.5) * 0.04,
-    });
+    const newLocation = generateRandomTorontoLocation();
+    setCenter(newLocation);
   };
+
+  // Initialize with a random Toronto location
+  useEffect(() => {
+    const initialLocation = generateRandomTorontoLocation();
+    setCenter(initialLocation);
+  }, []);
 
   useEffect(() => {
     if (!apiReady || !window.google) return;
