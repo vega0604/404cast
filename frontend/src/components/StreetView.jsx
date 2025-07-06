@@ -10,6 +10,21 @@ const StreetView = () => {
   });
 
   const [apiReady, setApiReady] = useState(false);
+  const [locationData, setLocationData] = useState(null);
+
+  // Fetch neighbourhood risk prediction
+  const fetchLocationPrediction = async (lat, lng) => {
+    try {
+      const response = await fetch(`/api/predictions/${lat}/${lng}`);
+      const data = await response.json();
+      console.log('🏘️ Neighbourhood prediction:', data);
+      setLocationData(data);
+      return data;
+    } catch (error) {
+      console.error('Error fetching location prediction:', error);
+      return null;
+    }
+  };
 
   useEffect(() => {
     if (!apiReady || !window.google) return;
@@ -20,12 +35,20 @@ const StreetView = () => {
       (data, status) => {
         if (status === 'OK') {
           const loc = data.location;
+          const actualLat = loc.latLng.lat();
+          const actualLng = loc.latLng.lng();
+          
           console.log('📍 Panorama metadata:');
           console.log('LatLng:', loc.latLng.toString());
           console.log('Pano ID:', loc.pano);
           console.log('Street name / description:', loc.description);
+          
+          // Fetch neighbourhood prediction for actual panorama coordinates
+          fetchLocationPrediction(actualLat, actualLng);
         } else {
           console.warn('No panorama found near this location');
+          // Fallback: use original coordinates
+          fetchLocationPrediction(center.lat, center.lng);
         }
       }
     );

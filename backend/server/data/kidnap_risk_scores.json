@@ -1,0 +1,797 @@
+{
+    "Agincourt North (129)": {
+        "risk_score": 15.2,
+        "latitude": 43.807524,
+        "longitude": -79.270838
+    },
+    "Agincourt South-Malvern West (128)": {
+        "risk_score": 26.8,
+        "latitude": 43.786709,
+        "longitude": -79.267812
+    },
+    "Alderwood (20)": {
+        "risk_score": 4.5,
+        "latitude": 43.605329,
+        "longitude": -79.541954
+    },
+    "Annex (95)": {
+        "risk_score": 62.3,
+        "latitude": 43.670351,
+        "longitude": -79.401609
+    },
+    "Avondale (153)": {
+        "risk_score": 2.8,
+        "latitude": 43.759999,
+        "longitude": -79.405244
+    },
+    "Banbury-Don Mills (42)": {
+        "risk_score": 18.0,
+        "latitude": 43.736521,
+        "longitude": -79.346381
+    },
+    "Bathurst Manor (34)": {
+        "risk_score": 10.3,
+        "latitude": 43.760527,
+        "longitude": -79.452698
+    },
+    "Bay-Cloverhill (169)": {
+        "risk_score": 20.3,
+        "latitude": 43.665393,
+        "longitude": -79.386665
+    },
+    "Bayview Village (52)": {
+        "risk_score": 14.4,
+        "latitude": 43.771833,
+        "longitude": -79.376445
+    },
+    "Bayview Woods-Steeles (49)": {
+        "risk_score": 3.1,
+        "latitude": 43.795831,
+        "longitude": -79.38212
+    },
+    "Bedford Park-Nortown (39)": {
+        "risk_score": 16.1,
+        "latitude": 43.728918,
+        "longitude": -79.422591
+    },
+    "Beechborough-Greenbrook (112)": {
+        "risk_score": 7.1,
+        "latitude": 43.693146,
+        "longitude": -79.475934
+    },
+    "Bendale South (157)": {
+        "risk_score": 7.5,
+        "latitude": 43.750097,
+        "longitude": -79.254229
+    },
+    "Bendale-Glen Andrew (156)": {
+        "risk_score": 32.5,
+        "latitude": 43.768454,
+        "longitude": -79.258051
+    },
+    "Birchcliffe-Cliffside (122)": {
+        "risk_score": 27.1,
+        "latitude": 43.696774,
+        "longitude": -79.26278
+    },
+    "Black Creek (24)": {
+        "risk_score": 38.8,
+        "latitude": 43.764601,
+        "longitude": -79.519209
+    },
+    "Blake-Jones (69)": {
+        "risk_score": 6.0,
+        "latitude": 43.676701,
+        "longitude": -79.338647
+    },
+    "Briar Hill-Belgravia (108)": {
+        "risk_score": 13.7,
+        "latitude": 43.698643,
+        "longitude": -79.449008
+    },
+    "Bridle Path-Sunnybrook-York Mills (41)": {
+        "risk_score": 4.8,
+        "latitude": 43.731331,
+        "longitude": -79.384326
+    },
+    "Broadview North (57)": {
+        "risk_score": 5.1,
+        "latitude": 43.688236,
+        "longitude": -79.352535
+    },
+    "Brookhaven-Amesbury (30)": {
+        "risk_score": 18.8,
+        "latitude": 43.701566,
+        "longitude": -79.488032
+    },
+    "Cabbagetown-South St.James Town (71)": {
+        "risk_score": 19.8,
+        "latitude": 43.665225,
+        "longitude": -79.370242
+    },
+    "Caledonia-Fairbank (109)": {
+        "risk_score": 4.9,
+        "latitude": 43.68978,
+        "longitude": -79.454561
+    },
+    "Casa Loma (96)": {
+        "risk_score": 5.1,
+        "latitude": 43.682151,
+        "longitude": -79.410235
+    },
+    "Centennial Scarborough (133)": {
+        "risk_score": 3.1,
+        "latitude": 43.783091,
+        "longitude": -79.150495
+    },
+    "Church-Wellesley (167)": {
+        "risk_score": 53.8,
+        "latitude": 43.665995,
+        "longitude": -79.382326
+    },
+    "Clairlea-Birchmount (120)": {
+        "risk_score": 47.0,
+        "latitude": 43.714764,
+        "longitude": -79.281509
+    },
+    "Clanton Park (33)": {
+        "risk_score": 17.1,
+        "latitude": 43.739676,
+        "longitude": -79.44583
+    },
+    "Cliffcrest (123)": {
+        "risk_score": 19.5,
+        "latitude": 43.721503,
+        "longitude": -79.237419
+    },
+    "Corso Italia-Davenport (92)": {
+        "risk_score": 14.8,
+        "latitude": 43.67744,
+        "longitude": -79.445686
+    },
+    "Danforth (66)": {
+        "risk_score": 15.2,
+        "latitude": 43.682406,
+        "longitude": -79.331821
+    },
+    "Danforth East York (59)": {
+        "risk_score": 7.8,
+        "latitude": 43.689364,
+        "longitude": -79.333244
+    },
+    "Don Valley Village (47)": {
+        "risk_score": 25.2,
+        "latitude": 43.78056,
+        "longitude": -79.350248
+    },
+    "Dorset Park (126)": {
+        "risk_score": 33.8,
+        "latitude": 43.760162,
+        "longitude": -79.279866
+    },
+    "Dovercourt Village (172)": {
+        "risk_score": 15.0,
+        "latitude": 43.664357,
+        "longitude": -79.429013
+    },
+    "Downsview (155)": {
+        "risk_score": 24.3,
+        "latitude": 43.734832,
+        "longitude": -79.477876
+    },
+    "Downtown Yonge East (168)": {
+        "risk_score": 92.0,
+        "latitude": 43.655747,
+        "longitude": -79.378516
+    },
+    "Dufferin Grove (83)": {
+        "risk_score": 13.9,
+        "latitude": 43.655764,
+        "longitude": -79.436767
+    },
+    "East End-Danforth (62)": {
+        "risk_score": 31.9,
+        "latitude": 43.685501,
+        "longitude": -79.300748
+    },
+    "East L'Amoreaux (148)": {
+        "risk_score": 11.8,
+        "latitude": 43.798843,
+        "longitude": -79.305802
+    },
+    "East Willowdale (152)": {
+        "risk_score": 10.7,
+        "latitude": 43.772993,
+        "longitude": -79.401501
+    },
+    "Edenbridge-Humber Valley (9)": {
+        "risk_score": 5.4,
+        "latitude": 43.671379,
+        "longitude": -79.520186
+    },
+    "Eglinton East (138)": {
+        "risk_score": 31.1,
+        "latitude": 43.739175,
+        "longitude": -79.246365
+    },
+    "Elms-Old Rexdale (5)": {
+        "risk_score": 7.3,
+        "latitude": 43.72112,
+        "longitude": -79.551062
+    },
+    "Englemount-Lawrence (32)": {
+        "risk_score": 16.1,
+        "latitude": 43.721448,
+        "longitude": -79.436735
+    },
+    "Eringate-Centennial-West Deane (11)": {
+        "risk_score": 9.4,
+        "latitude": 43.656472,
+        "longitude": -79.578634
+    },
+    "Etobicoke City Centre (159)": {
+        "risk_score": 39.8,
+        "latitude": 43.627782,
+        "longitude": -79.538686
+    },
+    "Etobicoke West Mall (13)": {
+        "risk_score": 4.4,
+        "latitude": 43.645249,
+        "longitude": -79.567527
+    },
+    "Fenside-Parkwoods (150)": {
+        "risk_score": 15.2,
+        "latitude": 43.761032,
+        "longitude": -79.330742
+    },
+    "Flemingdon Park (44)": {
+        "risk_score": 18.8,
+        "latitude": 43.71568,
+        "longitude": -79.33185
+    },
+    "Forest Hill North (102)": {
+        "risk_score": 5.3,
+        "latitude": 43.703109,
+        "longitude": -79.428793
+    },
+    "Forest Hill South (101)": {
+        "risk_score": 3.3,
+        "latitude": 43.693935,
+        "longitude": -79.415461
+    },
+    "Fort York-Liberty Village (163)": {
+        "risk_score": 18.1,
+        "latitude": 43.636061,
+        "longitude": -79.411083
+    },
+    "Glenfield-Jane Heights (25)": {
+        "risk_score": 51.4,
+        "latitude": 43.747916,
+        "longitude": -79.514392
+    },
+    "Golfdale-Cedarbrae-Woburn (141)": {
+        "risk_score": 32.6,
+        "latitude": 43.760983,
+        "longitude": -79.220385
+    },
+    "Greenwood-Coxwell (65)": {
+        "risk_score": 16.8,
+        "latitude": 43.672771,
+        "longitude": -79.324731
+    },
+    "Guildwood (140)": {
+        "risk_score": 1.8,
+        "latitude": 43.748633,
+        "longitude": -79.198853
+    },
+    "Harbourfront-CityPlace (165)": {
+        "risk_score": 31.9,
+        "latitude": 43.640123,
+        "longitude": -79.391218
+    },
+    "Henry Farm (53)": {
+        "risk_score": 10.3,
+        "latitude": 43.772644,
+        "longitude": -79.340458
+    },
+    "High Park North (88)": {
+        "risk_score": 19.2,
+        "latitude": 43.656292,
+        "longitude": -79.464828
+    },
+    "High Park-Swansea (87)": {
+        "risk_score": 14.4,
+        "latitude": 43.644734,
+        "longitude": -79.465265
+    },
+    "Highland Creek (134)": {
+        "risk_score": 6.8,
+        "latitude": 43.790694,
+        "longitude": -79.176579
+    },
+    "Hillcrest Village (48)": {
+        "risk_score": 9.7,
+        "latitude": 43.800284,
+        "longitude": -79.356095
+    },
+    "Humber Bay Shores (161)": {
+        "risk_score": 12.2,
+        "latitude": 43.621887,
+        "longitude": -79.483017
+    },
+    "Humber Heights-Westmount (8)": {
+        "risk_score": 2.4,
+        "latitude": 43.692083,
+        "longitude": -79.522123
+    },
+    "Humber Summit (21)": {
+        "risk_score": 27.4,
+        "latitude": 43.757045,
+        "longitude": -79.559074
+    },
+    "Humbermede (22)": {
+        "risk_score": 23.3,
+        "latitude": 43.745393,
+        "longitude": -79.543232
+    },
+    "Humewood-Cedarvale (106)": {
+        "risk_score": 5.3,
+        "latitude": 43.690374,
+        "longitude": -79.425991
+    },
+    "Ionview (125)": {
+        "risk_score": 11.3,
+        "latitude": 43.73307,
+        "longitude": -79.27307
+    },
+    "Islington (158)": {
+        "risk_score": 17.1,
+        "latitude": 43.645627,
+        "longitude": -79.546872
+    },
+    "Junction Area (90)": {
+        "risk_score": 18.3,
+        "latitude": 43.668199,
+        "longitude": -79.470561
+    },
+    "Junction-Wallace Emerson (171)": {
+        "risk_score": 29.4,
+        "latitude": 43.664146,
+        "longitude": -79.444641
+    },
+    "Keelesdale-Eglinton West (110)": {
+        "risk_score": 9.5,
+        "latitude": 43.685196,
+        "longitude": -79.470933
+    },
+    "Kennedy Park (124)": {
+        "risk_score": 36.4,
+        "latitude": 43.728628,
+        "longitude": -79.258064
+    },
+    "Kensington-Chinatown (78)": {
+        "risk_score": 75.9,
+        "latitude": 43.652968,
+        "longitude": -79.397983
+    },
+    "Kingsview Village-The Westway (6)": {
+        "risk_score": 19.7,
+        "latitude": 43.697001,
+        "longitude": -79.551387
+    },
+    "Kingsway South (15)": {
+        "risk_score": 4.0,
+        "latitude": 43.652098,
+        "longitude": -79.510557
+    },
+    "L'Amoreaux West (147)": {
+        "risk_score": 14.2,
+        "latitude": 43.790781,
+        "longitude": -79.324089
+    },
+    "Lambton Baby Point (114)": {
+        "risk_score": 0.0,
+        "latitude": 43.660387,
+        "longitude": -79.496884
+    },
+    "Lansing-Westgate (38)": {
+        "risk_score": 12.9,
+        "latitude": 43.754906,
+        "longitude": -79.421343
+    },
+    "Lawrence Park North (105)": {
+        "risk_score": 4.3,
+        "latitude": 43.729227,
+        "longitude": -79.404868
+    },
+    "Lawrence Park South (103)": {
+        "risk_score": 5.2,
+        "latitude": 43.716364,
+        "longitude": -79.407029
+    },
+    "Leaside-Bennington (56)": {
+        "risk_score": 5.8,
+        "latitude": 43.706492,
+        "longitude": -79.368576
+    },
+    "Little Portugal (84)": {
+        "risk_score": 14.0,
+        "latitude": 43.647135,
+        "longitude": -79.428675
+    },
+    "Long Branch (19)": {
+        "risk_score": 9.1,
+        "latitude": 43.593183,
+        "longitude": -79.532707
+    },
+    "Malvern East (146)": {
+        "risk_score": 24.6,
+        "latitude": 43.803739,
+        "longitude": -79.215467
+    },
+    "Malvern West (145)": {
+        "risk_score": 14.1,
+        "latitude": 43.806118,
+        "longitude": -79.228913
+    },
+    "Maple Leaf (29)": {
+        "risk_score": 1.8,
+        "latitude": 43.714109,
+        "longitude": -79.481032
+    },
+    "Markland Wood (12)": {
+        "risk_score": 1.9,
+        "latitude": 43.634068,
+        "longitude": -79.573386
+    },
+    "Milliken (130)": {
+        "risk_score": 25.3,
+        "latitude": 43.819781,
+        "longitude": -79.280418
+    },
+    "Mimico-Queensway (160)": {
+        "risk_score": 49.0,
+        "latitude": 43.613256,
+        "longitude": -79.507864
+    },
+    "Morningside (135)": {
+        "risk_score": 18.2,
+        "latitude": 43.782575,
+        "longitude": -79.203938
+    },
+    "Morningside Heights (144)": {
+        "risk_score": 19.1,
+        "latitude": 43.818586,
+        "longitude": -79.212742
+    },
+    "Moss Park (73)": {
+        "risk_score": 100.0,
+        "latitude": 43.656839,
+        "longitude": -79.36966
+    },
+    "Mount Dennis (115)": {
+        "risk_score": 14.1,
+        "latitude": 43.688758,
+        "longitude": -79.497558
+    },
+    "Mount Olive-Silverstone-Jamestown (2)": {
+        "risk_score": 47.4,
+        "latitude": 43.745521,
+        "longitude": -79.587092
+    },
+    "Mount Pleasant East (99)": {
+        "risk_score": 5.2,
+        "latitude": 43.707979,
+        "longitude": -79.386096
+    },
+    "NSA": {
+        "risk_score": 67.9,
+        "latitude": 2.159916,
+        "longitude": -3.916343
+    },
+    "New Toronto (18)": {
+        "risk_score": 16.4,
+        "latitude": 43.600606,
+        "longitude": -79.509116
+    },
+    "Newtonbrook East (50)": {
+        "risk_score": 14.4,
+        "latitude": 43.788972,
+        "longitude": -79.410537
+    },
+    "Newtonbrook West (36)": {
+        "risk_score": 32.5,
+        "latitude": 43.785882,
+        "longitude": -79.427293
+    },
+    "North Riverdale (68)": {
+        "risk_score": 8.3,
+        "latitude": 43.672693,
+        "longitude": -79.350775
+    },
+    "North St.James Town (74)": {
+        "risk_score": 32.7,
+        "latitude": 43.669097,
+        "longitude": -79.374643
+    },
+    "North Toronto (173)": {
+        "risk_score": 10.9,
+        "latitude": 43.709401,
+        "longitude": -79.395692
+    },
+    "O'Connor-Parkview (54)": {
+        "risk_score": 20.7,
+        "latitude": 43.706032,
+        "longitude": -79.304695
+    },
+    "Oakdale-Beverley Heights (154)": {
+        "risk_score": 51.9,
+        "latitude": 43.723619,
+        "longitude": -79.508816
+    },
+    "Oakridge (121)": {
+        "risk_score": 28.1,
+        "latitude": 43.69626,
+        "longitude": -79.281876
+    },
+    "Oakwood Village (107)": {
+        "risk_score": 19.0,
+        "latitude": 43.690936,
+        "longitude": -79.441713
+    },
+    "Old East York (58)": {
+        "risk_score": 4.2,
+        "latitude": 43.694167,
+        "longitude": -79.337578
+    },
+    "Palmerston-Little Italy (80)": {
+        "risk_score": 11.2,
+        "latitude": 43.659111,
+        "longitude": -79.418804
+    },
+    "Parkwoods-O'Connor Hills (149)": {
+        "risk_score": 6.5,
+        "latitude": 43.7493,
+        "longitude": -79.324687
+    },
+    "Pelmo Park-Humberlea (23)": {
+        "risk_score": 11.3,
+        "latitude": 43.719336,
+        "longitude": -79.531157
+    },
+    "Playter Estates-Danforth (67)": {
+        "risk_score": 9.0,
+        "latitude": 43.67843,
+        "longitude": -79.354918
+    },
+    "Pleasant View (46)": {
+        "risk_score": 4.1,
+        "latitude": 43.786837,
+        "longitude": -79.33375
+    },
+    "Princess-Rosethorn (10)": {
+        "risk_score": 3.2,
+        "latitude": 43.668235,
+        "longitude": -79.546242
+    },
+    "Regent Park (72)": {
+        "risk_score": 19.8,
+        "latitude": 43.659723,
+        "longitude": -79.361426
+    },
+    "Rexdale-Kipling (4)": {
+        "risk_score": 9.8,
+        "latitude": 43.720919,
+        "longitude": -79.564128
+    },
+    "Rockcliffe-Smythe (111)": {
+        "risk_score": 25.0,
+        "latitude": 43.675653,
+        "longitude": -79.489052
+    },
+    "Roncesvalles (86)": {
+        "risk_score": 20.2,
+        "latitude": 43.644327,
+        "longitude": -79.441274
+    },
+    "Rosedale-Moore Park (98)": {
+        "risk_score": 30.2,
+        "latitude": 43.679035,
+        "longitude": -79.384364
+    },
+    "Runnymede-Bloor West Village (89)": {
+        "risk_score": 4.5,
+        "latitude": 43.65867,
+        "longitude": -79.485481
+    },
+    "Rustic (28)": {
+        "risk_score": 7.7,
+        "latitude": 43.710112,
+        "longitude": -79.501322
+    },
+    "Scarborough Village (139)": {
+        "risk_score": 24.1,
+        "latitude": 43.741708,
+        "longitude": -79.219494
+    },
+    "South Eglinton-Davisville (174)": {
+        "risk_score": 10.9,
+        "latitude": 43.702469,
+        "longitude": -79.394052
+    },
+    "South Parkdale (85)": {
+        "risk_score": 38.0,
+        "latitude": 43.638176,
+        "longitude": -79.43402
+    },
+    "South Riverdale (70)": {
+        "risk_score": 48.2,
+        "latitude": 43.66051,
+        "longitude": -79.340537
+    },
+    "St Lawrence-East Bayfront-The Islands ": {
+        "risk_score": 52.2,
+        "latitude": 43.646177,
+        "longitude": -79.372088
+    },
+    "St.Andrew-Windfields (40)": {
+        "risk_score": 13.3,
+        "latitude": 43.754708,
+        "longitude": -79.382116
+    },
+    "Steeles (116)": {
+        "risk_score": 6.6,
+        "latitude": 43.81346,
+        "longitude": -79.32058
+    },
+    "Stonegate-Queensway (16)": {
+        "risk_score": 19.0,
+        "latitude": 43.633875,
+        "longitude": -79.50081
+    },
+    "Tam O'Shanter-Sullivan (118)": {
+        "risk_score": 20.6,
+        "latitude": 43.780207,
+        "longitude": -79.3021
+    },
+    "Taylor-Massey (61)": {
+        "risk_score": 16.4,
+        "latitude": 43.694354,
+        "longitude": -79.295154
+    },
+    "The Beaches (63)": {
+        "risk_score": 16.3,
+        "latitude": 43.671143,
+        "longitude": -79.299928
+    },
+    "Thistletown-Beaumond Heights (3)": {
+        "risk_score": 7.9,
+        "latitude": 43.738443,
+        "longitude": -79.567684
+    },
+    "Thorncliffe Park (55)": {
+        "risk_score": 15.0,
+        "latitude": 43.70625,
+        "longitude": -79.348199
+    },
+    "Trinity-Bellwoods (81)": {
+        "risk_score": 21.8,
+        "latitude": 43.649813,
+        "longitude": -79.414598
+    },
+    "University (79)": {
+        "risk_score": 20.0,
+        "latitude": 43.661872,
+        "longitude": -79.403117
+    },
+    "Victoria Village (43)": {
+        "risk_score": 16.0,
+        "latitude": 43.726202,
+        "longitude": -79.308115
+    },
+    "Wellington Place (164)": {
+        "risk_score": 73.3,
+        "latitude": 43.646095,
+        "longitude": -79.394957
+    },
+    "West Hill (136)": {
+        "risk_score": 66.6,
+        "latitude": 43.766864,
+        "longitude": -79.187126
+    },
+    "West Humber-Clairville (1)": {
+        "risk_score": 96.3,
+        "latitude": 43.719236,
+        "longitude": -79.595973
+    },
+    "West Queen West (162)": {
+        "risk_score": 14.7,
+        "latitude": 43.643567,
+        "longitude": -79.410858
+    },
+    "West Rouge (143)": {
+        "risk_score": 10.9,
+        "latitude": 43.797871,
+        "longitude": -79.154004
+    },
+    "Westminster-Branson (35)": {
+        "risk_score": 15.8,
+        "latitude": 43.780423,
+        "longitude": -79.449404
+    },
+    "Weston (113)": {
+        "risk_score": 35.1,
+        "latitude": 43.701994,
+        "longitude": -79.516457
+    },
+    "Weston-Pelham Park (91)": {
+        "risk_score": 12.0,
+        "latitude": 43.672572,
+        "longitude": -79.458984
+    },
+    "Wexford/Maryvale (119)": {
+        "risk_score": 45.6,
+        "latitude": 43.747317,
+        "longitude": -79.300745
+    },
+    "Willowdale West (37)": {
+        "risk_score": 14.1,
+        "latitude": 43.772422,
+        "longitude": -79.42209
+    },
+    "Willowridge-Martingrove-Richview (7)": {
+        "risk_score": 17.0,
+        "latitude": 43.682232,
+        "longitude": -79.556593
+    },
+    "Woburn North (142)": {
+        "risk_score": 32.3,
+        "latitude": 43.77288,
+        "longitude": -79.236807
+    },
+    "Woodbine Corridor (64)": {
+        "risk_score": 10.8,
+        "latitude": 43.675829,
+        "longitude": -79.315987
+    },
+    "Woodbine-Lumsden (60)": {
+        "risk_score": 1.3,
+        "latitude": 43.694603,
+        "longitude": -79.312843
+    },
+    "Wychwood (94)": {
+        "risk_score": 9.8,
+        "latitude": 43.678669,
+        "longitude": -79.426267
+    },
+    "Yonge-Bay Corridor (170)": {
+        "risk_score": 84.8,
+        "latitude": 43.653996,
+        "longitude": -79.382897
+    },
+    "Yonge-Doris (151)": {
+        "risk_score": 10.4,
+        "latitude": 43.770095,
+        "longitude": -79.412414
+    },
+    "Yonge-Eglinton (100)": {
+        "risk_score": 11.4,
+        "latitude": 43.705312,
+        "longitude": -79.401264
+    },
+    "Yonge-St.Clair (97)": {
+        "risk_score": 1.7,
+        "latitude": 43.688618,
+        "longitude": -79.397672
+    },
+    "York University Heights (27)": {
+        "risk_score": 77.4,
+        "latitude": 43.763741,
+        "longitude": -79.489749
+    },
+    "Yorkdale-Glen Park (31)": {
+        "risk_score": 37.0,
+        "latitude": 43.716899,
+        "longitude": -79.454272
+    }
+}
