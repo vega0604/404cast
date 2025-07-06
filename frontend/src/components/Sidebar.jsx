@@ -145,9 +145,9 @@ const Sidebar = ({ gameHistory, currentGame, onNewGame }) => {
                                                 }}
                                             >
                                                 {round.difference !== undefined 
-                                                    ? round.difference
+                                                    ? (100 - round.difference)
                                                     : (round.answer !== undefined && round.guess !== undefined)
-                                                        ? Math.abs(round.answer - round.guess)
+                                                        ? (100 - Math.abs(round.answer - round.guess))
                                                         : round.score}
                                             </div>
                                         )}
@@ -171,9 +171,9 @@ const Sidebar = ({ gameHistory, currentGame, onNewGame }) => {
                                                 }}
                                             >
                                                 {round.difference !== undefined 
-                                                    ? round.difference
+                                                    ? (100 - round.difference)
                                                     : (round.answer !== undefined && round.guess !== undefined)
-                                                        ? Math.abs(round.answer - round.guess)
+                                                        ? (100 - Math.abs(round.answer - round.guess))
                                                         : round.score}
                                             </div>
                                         )}
