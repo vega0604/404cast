@@ -5,7 +5,6 @@ import TopBar from '@components/TopBar'
 import { gameProgress } from '@data/gameProgress'
 
 function App() {
-
   return (
     <>
       <StreetView />
